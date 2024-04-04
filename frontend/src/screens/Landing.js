@@ -1,5 +1,3 @@
-import Todo from './Todo';
-import Rest from './Rest';
 import {
   useNavigate,
 } from 'react-router-dom';
