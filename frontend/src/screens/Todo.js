@@ -1,6 +1,6 @@
 function Todo() {
     return (
-      <div className="bg-[#302E28] mx-5 p-2">
+      <div className="h-screen p-2 bg-[#302E28]">
         <div id="header" className="flex justify-start justify-around m-2 py-4">
 
           <h1 className="text-3xl font-bold">
