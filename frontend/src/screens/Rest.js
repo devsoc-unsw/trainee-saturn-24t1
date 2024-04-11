@@ -14,8 +14,9 @@ function Rest() {
         </div>
         
         <div className="mt-8 ">
-          <h2 className="text-2xl font-bold">CATEGORY 1</h2>
-          {/* Category 1 - Hungry? */}
+          <h2 className="text-2xl font-bold mt-8 self-center bg-blue-100 px-4 py-2 rounded"> 
+          FOOD SUGGESTIONS
+          </h2>
           <p className="text-lg">Positive Affirmation</p>
           {/* Image 1 - eg yallah eats */}
           {/* Image 2 */}
@@ -24,8 +25,9 @@ function Rest() {
         </div>
 
         <div className="mt-8">
-          <h2 className="text-2xl font-bold">CATEGORY 2</h2>
-          {/* Category 2 - Need Fresh Air? */}
+          <h2 className="text-2xl font-bold mt-8 self-center bg-blue-100 px-4 py-2 rounded"> 
+          OUTDOOR ACTIVITIES
+          </h2>
           {/* Image 1 - eg meditation  */}
           {/* Image 2 */}
           {/* Image 3 */}
@@ -34,8 +36,9 @@ function Rest() {
         </div>
         
         <div className="mt-8">
-          <h2 className="text-2xl font-bold">CATEGORY 3</h2>
-          {/* Category 3 - Tired ? */}
+          <h2 className="text-2xl font-bold mt-8 self-center bg-blue-100 px-4 py-2 rounded"> 
+          COMFORT ACTIVITIES
+          </h2>
           {/* Image 1- eg netflix */}
           {/* Image 2 */}
           {/* Image 3 */}
