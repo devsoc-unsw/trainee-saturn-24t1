@@ -7,7 +7,7 @@ function Rest() {
           {/* <img src=""></img> */}
         </h1>
 
-        <h1 className="text-3xl font-bold underline"> Rest </h1>
+        <h1 className="text-3xl font-bold underline"> Rest Page</h1>
 
         <h2 className="text-2xl font-bold mt-8">TAKE A BREAK & DE-STRESS</h2>
         {/* Take a Break & De-Stress */}
