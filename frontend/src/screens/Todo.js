@@ -1,3 +1,6 @@
+import AddTaskTab from './components-hana/AddTaskTab'
+import TaskTab from './props-hana/TaskTab'
+
 function Todo() {
     return (
       <div className="h-screen p-2 bg-[#302E28]">
@@ -25,8 +28,7 @@ function Todo() {
 
             <div id="nav-tasks" className="flex">
               {/* be able to add and delete categories */}
-              <h3 className="py-2 px-4 text-[#E9E9E9] bg-[#707C87] rounded-t-lg">TASKS</h3>
-              <h3 className="py-2 px-4 text-[#3C3C3C] bg-[#B1C9DF] rounded-t-lg">+</h3>
+              <AddTaskTab/>
             </div>
 
             <div id="tasks" className="p-4 bg-[#80CDBB]">
