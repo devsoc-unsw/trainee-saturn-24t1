@@ -13,7 +13,8 @@ function Rest() {
           TAKE A BREAK & DE-STRESS
         </div>
         
-        <div className="mt-8 ">
+        <div className="mt-8 w-full flex flex-col items-center">
+        <div className="bg-[#D7C4A9] text-black font-bold mr-2 rounded-full px-4 py-1">Hungry?</div>
           <h2 className="text-2xl font-bold mt-8 self-center bg-blue-100 px-4 py-2 rounded"> 
           FOOD SUGGESTIONS
           </h2>
