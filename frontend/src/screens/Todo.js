@@ -1,5 +1,5 @@
 import GoalsNotes from './GoalsNotes';
-
+import PopUpQuotes from '../PopUpQuote';
 function Todo() {
   return (
     <div className="h-screen p-2 bg-[#302E28]">
@@ -12,7 +12,7 @@ function Todo() {
 
         <div id="quotes" className="mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg">
           {/* quotes pop up when you finish a task */}
-          <p className="text-[#3C3C3C]">You've done something, that's great! You're doing a good job!</p>
+          <p className="text-[#3C3C3C]" id="quote-content"><PopUpQuotes /></p>
         </div>
 
         <div id="dark-mode">
