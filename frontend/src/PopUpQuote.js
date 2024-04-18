@@ -4,21 +4,24 @@ function PopUpQuotes() {
     const [quote, setQuote] = useState("");
 
     useEffect(() => {
-        fetch('https://api.quotable.io/quotes/random')
+        fetch('https://api.quotable.io/quotes/random?maxLength=60')
             .then(resp => resp.json())
             .then(json => setQuote(json[0]))
             .catch(error => console.error(error));
-        console.log('display')
     }, []);
 
     // const checkbox = document.querySelector("checkbox");
 
+    const closeClicked = () => {
+        const content = document.getElementById("quote-box");
+        content.style.display = "none";
+    }
+
     return <>
-        <div id="quote-content" className="mx-4 py-2 px-5 bg-[#80CDBB] 
-            max-w-52 max-h-44 rounded-lg">
-            <p className="text-[#3C3C3C]">
-                {quote.content}
-            </p>
+        <div id="quote-box" className="flex object-right mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg">
+            <p className="text-[#3C3C3C]"> {quote.content} </p>
+            <button id="closeButton" className="font-bold mx-2"
+                onClick={closeClicked}>X</button>
         </div>
     </>
 }
