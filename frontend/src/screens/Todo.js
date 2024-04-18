@@ -1,6 +1,6 @@
 import GoalsNotes from './GoalsNotes';
 
-import AddTaskTab from './components-hana/AddTaskTab'
+import ListOfTabs from './components-hana/ListOfTabs'
 
 function Todo() {
   return (
@@ -27,7 +27,7 @@ function Todo() {
 
         <div id="to-do-list" className="min-w-96 m-4 basis-1/3">
 
-          <AddTaskTab/>
+          <ListOfTabs/>
 
         </div>
 
