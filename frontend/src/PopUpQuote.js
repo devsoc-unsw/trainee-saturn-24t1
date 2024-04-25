@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 function PopUpQuotes() {
     const [quote, setQuote] = useState("");
 
+    // fetch API 
     useEffect(() => {
         fetch('https://api.quotable.io/quotes/random?maxLength=60')
             .then(resp => resp.json())
@@ -10,15 +11,24 @@ function PopUpQuotes() {
             .catch(error => console.error(error));
     }, []);
 
+
+    // unimplemented feature
     // const checkbox = document.querySelector("checkbox");
 
+    // quote-box is only visible after quote is loaded
+    if (quote) {
+        const content = document.getElementById("quote-box");
+        content.style.display = "flex";
+    }
+
+    // quote-box will disappear when close button 'x' is clicked
     const closeClicked = () => {
         const content = document.getElementById("quote-box");
         content.style.display = "none";
     }
 
     return <>
-        <div id="quote-box" className="flex object-right mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg">
+        <div id="quote-box" className="hidden flex object-right mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg">
             <p className="text-[#3C3C3C]"> {quote.content} </p>
             <button id="closeButton" className="font-bold mx-2"
                 onClick={closeClicked}>X</button>
