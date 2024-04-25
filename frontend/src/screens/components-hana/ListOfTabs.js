@@ -14,7 +14,8 @@ const ListOfTabs = () => {
                     id: uuidv4(),
                     name: "New Task",
                     description: "Task type",
-                    due_date: "none"
+                    due_date: "none",
+                    checked: false
                 }
             ]
         }
@@ -31,7 +32,8 @@ const ListOfTabs = () => {
                         id: uuidv4(),
                         name: "New Task",
                         description: "Task type",
-                        due_date: "none"
+                        due_date: "none",
+                        checked: false
                     }
                 ]
             }
@@ -89,10 +91,26 @@ const ListOfTabs = () => {
         
     }
 
-    function deleteTask() {
-        //
+    function deleteTask(task_id) {
+
+        const new_tabs = [...tabs];
+        const selectedTab = new_tabs.find((tabs) => tabs.id === currentTab);
+        const new_task = selectedTab.tasks.filter((obj) => obj.id !== task_id);
+        selectedTab.tasks = new_task;
+        setTabs(new_tabs);
+
     }
-    
+
+    function setChecked(task_id) {
+        
+        const new_tabs = [...tabs];
+        const selectedTab = new_tabs.find((tabs) => tabs.id === currentTab);
+        const new_task = selectedTab.tasks.find((obj) => obj.id === task_id);
+        new_task.checked = !new_task.checked;
+        setTabs(new_tabs);
+
+    }
+
 
     return(
         <>
@@ -152,7 +170,12 @@ const ListOfTabs = () => {
                         <div className="w-64">
                             <div id="task-1-name" className="flex justify-between p-2 bg-[#495253]">
                                 <div>
-                                    <input type="checkbox" id="checkbox-1"></input>
+                                    <input
+                                        type="checkbox"
+                                        id="checkbox-1"
+                                        defaultChecked={x.checked}
+                                        onChange={() => setChecked(x.id)}
+                                    ></input>
                                     <label for="checkbox-1" className="p-2 text-[#D7C4A9]">
                                         {x.name}
                                     </label>
@@ -170,7 +193,7 @@ const ListOfTabs = () => {
                         <div className="flex flex-col">
                             <button>EDIT</button>
                             <button
-                                onClick={deleteTask()}
+                                onClick={() => deleteTask(x.id)}
                             >DELETE</button>
                         </div>
                     </div>
