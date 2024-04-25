@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-const Task = (tabs, setTabs, currentTab, task) => {
+const Task = ({tabs, setTabs, currentTab, task}) => {
 
     function deleteTask(task_id) {
 
