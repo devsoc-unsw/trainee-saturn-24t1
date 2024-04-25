@@ -1,20 +1,21 @@
 import GoalsNotes from './GoalsNotes';
-
+import PopUpQuotes from '../PopUpQuote';
 import ListOfTabs from './components-hana/ListOfTabs'
 
 function Todo() {
   return (
     <div className="h-screen p-2 bg-[#302E28]">
-      <div id="header" className="flex justify-start justify-around m-2 py-4">
-
+      <div id="header" className="grid grid-cols-3 justify-around m-2 py-4
+        place-items-center h-1/5">
         <h1 className="text-3xl font-bold">
           <span className="text-zinc-200">Achieve</span><span className="text-[#2ADCB1]">Mint</span>
           {/* <img src=""></img> */}
         </h1>
 
-        <div id="quotes" className="mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg">
-          {/* quotes pop up when you finish a task */}
-          <p className="text-[#3C3C3C]">You've done something, that's great! You're doing a good job!</p>
+        <div id="quotes" className="">
+          {/* quotes pop up when you finish a task will later implement
+              prop so that quote shows up once a button is clicked */}
+          <PopUpQuotes />
         </div>
 
         <div id="dark-mode">
