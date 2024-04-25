@@ -48,7 +48,7 @@ const ListOfTabs = () => {
     }
 
     function editTabText(id) {
-        console.log("here");
+        //
     }
 
     function ShowTaskList(id) {
@@ -88,29 +88,46 @@ const ListOfTabs = () => {
         setTabs(new_tabs);
         
     }
+
+    function deleteTask() {
+        //
+    }
     
 
     return(
         <>
         <div id="nav-tasks" className="flex">
-            {tabs.map(x => (<div className="py-2 px-3 text-[#E9E9E9] bg-[#707C87]">
+            {tabs.map(x => (
+                <div
+                    className={
+                        x.id === currentTab
+                        ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB] font-bold rounded-t-lg"
+                        : "py-1 px-3 text-[#3C3C3C] bg-[#62A193] rounded-t-lg"
+                    }
+                >
                 <button
-                    onClick={() => setCurrentTab(x.id)}
+                    onClick={() => {setCurrentTab(x.id)}}
                     onDoubleClick={() => editTabText(x.id)}
                 >{x.name}</button>
                 <button
                     onClick={() => deleteTab(x.id)}
-                    className="py-2 px-3 text-[#E9E9E9] bg-[#707C87]"
+                    className={
+                        x.id === currentTab
+                        ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB] rounded-t-lg"
+                        : "py-1 px-3 text-[#3C3C3C] bg-[#62A193] rounded-t-lg"
+                    }
                 >x</button>
             </div>))}
             <button
                 onClick={() => addTab()}
-                className="py-2 px-4 text-[#3C3C3C] bg-[#B1C9DF] rounded-t-lg"
+                className="py-2 px-4 text-[#3C3C3C] bg-[#B1C9DF] font-bold rounded-t-lg"
             >+</button>
         </div>
         
         <div id="tasks-info" className="p-4 bg-[#80CDBB]">
-            <div className="flex justify-between p-2">
+        {ShowTaskList(currentTab) === undefined
+        ? <div>No tabs selected</div>
+        : <div className="flex justify-between p-2">
                 <div className="task-title">
                     <h2 className="px-2 text-[#3C3C3C] font-bold">TASKS</h2>
                     <h3 className="text-[#3C3C3C]">{
@@ -125,13 +142,11 @@ const ListOfTabs = () => {
                         className="m-1 p-2 bg-[#707C87] text-[#E9E9E9] rounded-lg"
                     >ADD TASKS</button>
                 </div>
-            </div>
+            </div>}
 
             <div id="tasks">
                 {ShowTaskList(currentTab) === undefined
-                ? <div>
-                    No tabs selected
-                </div>
+                ? <div>No tasks available</div>
                 : ShowTaskList(currentTab).map(x => (
                     <div className="flex justify-between m-1">
                         <div className="w-64">
@@ -154,7 +169,9 @@ const ListOfTabs = () => {
                         </div>
                         <div className="flex flex-col">
                             <button>EDIT</button>
-                            <button>DELETE</button>
+                            <button
+                                onClick={deleteTask()}
+                            >DELETE</button>
                         </div>
                     </div>
                 ))}
