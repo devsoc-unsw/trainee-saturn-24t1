@@ -1,9 +1,35 @@
+import { useEffect } from 'react';
+import axios from 'axios';
 import {
   useNavigate,
 } from 'react-router-dom';
 
 function Landing() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    let fn = async () => {
+      let tasks = await test();
+      console.log(tasks);
+    };
+    fn();
+  }, []);
+
+  const test = async () => {
+    const body = {
+      name: "sleep",
+      checked: false,
+    }
+    try {
+      await axios.post(`http://localhost:5001/testmake`, body);
+      let tasks = await axios.get(`http://localhost:5001/testget`);
+      return tasks;
+    } catch (err) {
+      alert(err.response.data.error);
+      return("error");
+    }
+  };
+
 
   return (
     <div className="p-3 flex flex-col bg-[#302E28] items-center text-center h-screen align-middle">
