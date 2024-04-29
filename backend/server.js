@@ -5,7 +5,7 @@ let cors = require("cors");
 
 // Create our app
 const app = express();
-mongoose.connect("mongodb://localhost/achievemint");
+mongoose.connect("mongodb://127.0.0.1/achievemint");
 const db = mongoose.connection;
 
 db.on('error', (err) => console.log(err));
