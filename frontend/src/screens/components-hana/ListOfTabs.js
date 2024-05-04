@@ -28,6 +28,11 @@ const ListOfTabs = () => {
 
     // number of tabs limited to 3
     function addTab() {
+        if (emptyTab === true) {
+            editTabText(currentTab);
+            return;
+        }
+
         if (tabs.length < 3) {
             const new_tab = {
                 id: uuidv4(),
@@ -51,13 +56,21 @@ const ListOfTabs = () => {
 
     function deleteTab(id) {
         if (currentTab === id && emptyTab === true) {
+            // can delete current empty tab
             setEmptyTab(false);
+        } else if (currentTab !== id && emptyTab === true) {
+            // cannot delete another tab while currentTab is empty
+            editTabText(currentTab);
+            return;
         }
         const new_tabs = [...tabs].filter((obj) => obj.id !== id);
         setTabs(new_tabs);
     }
 
     function editTabText(id) {
+        if (emptyTab === true) {
+            id = currentTab;
+        }
         setIsEditing(id);
         // change to edit mode (edit box appears)
         const tabNameEditBox = textareaRefs.current[id];
@@ -67,6 +80,15 @@ const ListOfTabs = () => {
         tabNameEditBox.focus();
         // put cursor to end of text
         tabNameEditBox.setSelectionRange(tabNameEditBox.value.length, tabNameEditBox.value.length);
+    }
+
+    function handleChangeTab(id) {
+        if (emptyTab === false) {
+            // can only change tab when there is no emptyTab
+            setCurrentTab(id);
+        } else {
+            editTabText(currentTab);
+        }
     }
 
     function tabNameChanged(id) {
@@ -155,7 +177,7 @@ const ListOfTabs = () => {
                         }
                     >
                         <button
-                            onClick={() => { setCurrentTab(x.id) }}
+                            onClick={() => handleChangeTab(x.id)}
                             onDoubleClick={() => editTabText(x.id)}
                         >
                             {currentTab === x.id ? (
