@@ -1,13 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import Task from "./Task.js";
-import PopUpDialog from "../PopUpDialog.js";
+import PopUpAlert from "../PopUpAlert.js";
 
 // a component used to add and delete tabs for tasks
 const ListOfTabs = () => {
     const textareaRefs = useRef({});
     // state of editing, receive id as argument
     const [isEditing, setIsEditing] = useState(null);
+    const [emptyTab, setEmptyTab] = useState(false);
     // initial state for tabs
     const [tabs, setTabs] = useState([
         {
@@ -49,6 +50,9 @@ const ListOfTabs = () => {
     }
 
     function deleteTab(id) {
+        if (currentTab === id && emptyTab === true) {
+            setEmptyTab(false);
+        }
         const new_tabs = [...tabs].filter((obj) => obj.id !== id);
         setTabs(new_tabs);
     }
@@ -79,9 +83,12 @@ const ListOfTabs = () => {
 
         if (event.keyCode === 13 || flag) {
             if (selectedTab.name === "") {
-                <PopUpDialog />
+                setEmptyTab(true);
+                // force user to type in non-empty tab name
+                editTabText(id);
                 return;
             }
+            setEmptyTab(false);
             // if key = enter or flag = 1, edit box is closed
             setIsEditing(null);
             const tabNameEditBox = textareaRefs.current[id];
@@ -131,6 +138,13 @@ const ListOfTabs = () => {
 
     return (
         <>
+            <div id="alert" className={
+                emptyTab === true
+                    ? "my-2 rounded-lg"
+                    : "hidden my-2 rounded-lg"
+            }>
+                <PopUpAlert msg="Tab name cannot be empty" />
+            </div>
             <div id="nav-tasks" className="flex">
                 {tabs.map(x => (
                     <div
