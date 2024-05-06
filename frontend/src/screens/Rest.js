@@ -47,28 +47,28 @@ function Rest() {
     };
 
     return (
-        <div className="h-screen p-2 bg-[#302E28] flex">
+        <div className="h-screen p-2 bg-[#302E28] flex justify-center items-center">
             <div className="w-1/4 p-4 flex flex-col justify-between">
-                <div className="flex flex-col items-start">
+                <div className="flex flex-col items-center">
                     <h1 className="text-3xl font-bold">
                         <span className="text-zinc-200">Achieve</span><span className="text-[#2ADCB1]">Mint</span>
                     </h1>
-                    <p className="text-lg font-semibold mt-4 text-white">Sometimes, it's important to step back, take a deep breath, and relax. Here are some activities to help you unwind.</p>
+                    <p className="text-lg font-semibold mt-4 text-white text-center">Sometimes, it's important to step back, take a deep breath, and relax. Here are some activities to help you unwind.</p>
                 </div>
-                <div className="flex flex-col items-start mt-8">
+                <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-white font-bold rounded-full px-4 py-2 text-center">Hungry?</div>
-                    <p className="mt-2 text-white">{foodAffirmations[foodIndex]}</p>
-                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-white font-bold py-2 px-4 mt-2 rounded" onClick={changeFoodAffirmation}>Next Affirmation</button>
+                    <p className="mt-2 text-white text-center">{foodAffirmations[foodIndex]}</p>
+                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-white font-bold py-3 px-6 mt-2 rounded-lg" onClick={changeFoodAffirmation}>Next Affirmation</button>
                 </div>
-                <div className="flex flex-col items-start mt-8">
-                    <div className="bg-[#D7C4A9] text-white font-bold rounded-full px-4 py-2 text-center">Need fresh Air?</div>
-                    <p className="mt-2 text-white">{outdoorAffirmations[outdoorIndex]}</p>
-                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-white font-bold py-2 px-4 mt-2 rounded" onClick={changeOutdoorAffirmation}>Next Affirmation</button>
+                <div className="flex flex-col items-center mt-8">
+                    <div className="bg-[#D7C4A9] text-white font-bold rounded-full px-4 py-2 text-center">Need Fresh Air?</div>
+                    <p className="mt-2 text-white text-center">{outdoorAffirmations[outdoorIndex]}</p>
+                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-white font-bold py-3 px-6 mt-2 rounded-lg" onClick={changeOutdoorAffirmation}>Next Affirmation</button>
                 </div>
-                <div className="flex flex-col items-start mt-8">
+                <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-white font-bold rounded-full px-4 py-2 text-center">Tired?</div>
-                    <p className="mt-2 text-white">{comfortAffirmations[comfortIndex]}</p>
-                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-white font-bold py-2 px-4 mt-2 rounded" onClick={changeComfortAffirmation}>Next Affirmation</button>
+                    <p className="mt-2 text-white text-center">{comfortAffirmations[comfortIndex]}</p>
+                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-white font-bold py-3 px-6 mt-2 rounded-lg" onClick={changeComfortAffirmation}>Next Affirmation</button>
                 </div>
             </div>
             <div className="w-3/4">

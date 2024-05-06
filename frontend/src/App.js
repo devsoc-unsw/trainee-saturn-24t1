@@ -10,14 +10,13 @@ import Rest from './screens/Rest';
 
 function App() {
   const navigate = useNavigate();
-  // hello
 
   return (
     <div>
       <div className='flex justify-evenly'>
-        <button onClick={() => navigate('/todo')}>To do</button>
-        <button onClick={() => navigate('/')}>Landing</button>
-        <button onClick={() => navigate('/rest')}>Rest</button>
+        <button className="nav-button" onClick={() => navigate('/todo')}>TO DO</button>
+        <button className="nav-button" onClick={() => navigate('/')}>LANDING</button>
+        <button className="nav-button" onClick={() => navigate('/rest')}>REST</button>
       </div>
       <Routes>
         <Route path='/' element={<Landing />} />
