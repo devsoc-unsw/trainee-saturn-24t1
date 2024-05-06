@@ -1,6 +1,7 @@
 import GoalsNotes from './GoalsNotes';
 import PopUpQuotes from './PopUpQuote';
 import ListOfTabs from './components-hana/ListOfTabs'
+import ProgressBar from './components-hana/ProgressBar';
 
 function Todo() {
   return (
@@ -33,10 +34,10 @@ function Todo() {
         </div>
 
         <div id="features" className="mx-4 basis-1/3">
-
-          <div id="progress-bar" className="m-1 p-2 bg-[#877070]">
+          {/* {bg-[#877070]} */}
+          <div id="progress-bar" className="m-1 p-2 ">
             {/* shows how many tasks you've completed so far */}
-            PROGRESS BAR
+            <ProgressBar />
           </div>
 
           <div id="alerts" className="m-2 py-3 px-5 bg-[#D4DCFF] rounded-lg">
