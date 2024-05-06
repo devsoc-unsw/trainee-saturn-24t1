@@ -36,7 +36,7 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
         // updates due date
         const date = document.getElementById("task-due-date-edit");
         if (date.value !== "") {
-            new_task.due_date = date.value;
+            new_task.due_date = date.valueAsDate;
         }
 
         new_task.edit_mode = false;
@@ -119,7 +119,7 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
                     ? <h3
                         id="task-due-date"
                         className="text-[#D7C4A9]"
-                    >Due date: {task.due_date}</h3>
+                    >Due date: {task.due_date.toDateString()}</h3>
                     : <div>
                         <label
                             className="text-[#D7C4A9]"
