@@ -19,8 +19,9 @@ const ListOfTabs = () => {
                     id: uuidv4(),
                     name: "New Task",
                     description: "Task type",
-                    due_date: "none",
-                    checked: false
+                    due_date: new Date(),
+                    checked: false,
+                    edit_mode: false
                 }
             ]
         }
@@ -42,8 +43,9 @@ const ListOfTabs = () => {
                         id: uuidv4(),
                         name: "New Task",
                         description: "Task type",
-                        due_date: "none",
-                        checked: false
+                        due_date: new Date(),
+                        checked: false,
+                        edit_mode: false
                     }
                 ]
             }
@@ -64,6 +66,7 @@ const ListOfTabs = () => {
             return;
         }
         const new_tabs = [...tabs].filter((obj) => obj.id !== id);
+        setCurrentTab("");
         setTabs(new_tabs);
     }
 
@@ -71,6 +74,7 @@ const ListOfTabs = () => {
         if (emptyTab === true) {
             id = currentTab;
         }
+
         setIsEditing(id);
         // change to edit mode (edit box appears)
         const tabNameEditBox = textareaRefs.current[id];
@@ -85,7 +89,7 @@ const ListOfTabs = () => {
     function handleChangeTab(id) {
         if (emptyTab === false) {
             // can only change tab when there is no emptyTab
-            setCurrentTab(id);
+            saveEdit(id);
         } else {
             editTabText(currentTab);
         }
@@ -115,10 +119,11 @@ const ListOfTabs = () => {
             setIsEditing(null);
             const tabNameEditBox = textareaRefs.current[id];
             tabNameEditBox.style.display = "none";
+
         }
     }
 
-    function ShowTaskList(id) {
+    function showTaskList(id) {
 
         const selectedTab = tabs.find((tabs) => tabs.id === id);
 
@@ -132,6 +137,7 @@ const ListOfTabs = () => {
 
     }
 
+    // saves current tab id
     const [currentTab, setCurrentTab] = useState("");
 
     function addTask() {
@@ -147,11 +153,43 @@ const ListOfTabs = () => {
             id: uuidv4(),
             name: "New Task",
             description: "Task type",
-            due_date: "none",
-            checked: false
+            due_date: new Date(),
+            checked: false,
+            edit_mode: false
         }
 
         selectedTab.tasks.push(new_task);
+
+        setTabs(new_tabs);
+
+    }
+
+    // saves any changes to tasks when switching tabs
+    function saveEdit(id) {
+        
+        const new_tabs = [...tabs];
+
+        if (currentTab === "") {
+            setCurrentTab(id);
+            return;
+        }
+
+        const selectedTab = new_tabs.find((tabs) => tabs.id === currentTab);
+        const task_list = selectedTab.tasks;
+        
+        // checks if there are any tasks that are being edited
+        var edit_flag = false;
+        for (var i = 0; i < task_list.length; i++) {
+            if (task_list[i].edit_mode === true) {
+                edit_flag = true;
+            }
+        }
+
+        if (edit_flag === false) {
+            setCurrentTab(id);
+        } else {
+            alert("You have unsaved changes for your tasks.");
+        }
 
         setTabs(new_tabs);
 
@@ -221,15 +259,15 @@ const ListOfTabs = () => {
             </div >
 
             <div id="tasks-info" className="p-4 bg-[#80CDBB]">
-                {ShowTaskList(currentTab) === undefined
+                {showTaskList(currentTab) === undefined
                     ? <div>No tabs selected</div>
                     : <div className="flex justify-between p-2">
                         <div className="task-title">
                             <h2 className="px-2 text-[#3C3C3C] font-bold">TASKS</h2>
                             <h3 className="text-[#3C3C3C]">{
-                                ShowTaskList(currentTab) === undefined
+                                showTaskList(currentTab) === undefined
                                     ? 0
-                                    : ShowTaskList(currentTab).length
+                                    : showTaskList(currentTab).length
                             } tasks left</h3>
                         </div>
                         <div className="add-task">
@@ -241,11 +279,11 @@ const ListOfTabs = () => {
                     </div>}
 
                 <div id="tasks">
-                    {ShowTaskList(currentTab) === undefined
-                        ? <div></div>
-                        : ShowTaskList(currentTab).map(x => (<Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x} />))}
+                    {showTaskList(currentTab) === undefined
+                    ? <div></div>
+                    : showTaskList(currentTab).map(x => (
+                        <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x}/>))}
                 </div>
-
             </div>
         </>
     );
