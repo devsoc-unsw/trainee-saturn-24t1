@@ -1,5 +1,5 @@
 import GoalsNotes from './GoalsNotes';
-import PopUpQuotes from '../PopUpQuote';
+import PopUpQuotes from './PopUpQuote';
 import ListOfTabs from './components-hana/ListOfTabs'
 
 function Todo() {
@@ -28,7 +28,7 @@ function Todo() {
 
         <div id="to-do-list" className="min-w-96 m-4 basis-1/3">
 
-          <ListOfTabs/>
+          <ListOfTabs />
 
         </div>
 
