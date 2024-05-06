@@ -36,22 +36,3 @@
     transform: rotate(360deg);
   }
 }
-/* style for the header tab buttons */
-.nav-button {
-  background-color: #80CDBB; /* didnt know what colour to choose so i chose mint */
-  color: black;
-  border: none;
-  padding: 10px 0; 
-  width: calc(100% / 3);
-  font-size: 16px;
-  font-weight: bold; 
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; 
-  box-sizing: border-box; 
-}
-
-.nav-button:hover {
-  background-color: #238e75; 
-  transform: translateY(-3px); 
-}
-
