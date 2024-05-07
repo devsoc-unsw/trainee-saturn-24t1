@@ -4,7 +4,7 @@ import Task from "./Task.js";
 import PopUpAlert from "../PopUpAlert.js";
 
 // a component used to add and delete tabs for tasks
-const ListOfTabs = () => {
+const ListOfTabs = (props) => {
     const textareaRefs = useRef({});
     // state of editing, receive id as argument
     const [isEditing, setIsEditing] = useState(null);
@@ -166,7 +166,7 @@ const ListOfTabs = () => {
 
     // saves any changes to tasks when switching tabs
     function saveEdit(id) {
-        
+
         const new_tabs = [...tabs];
 
         if (currentTab === "") {
@@ -176,7 +176,7 @@ const ListOfTabs = () => {
 
         const selectedTab = new_tabs.find((tabs) => tabs.id === currentTab);
         const task_list = selectedTab.tasks;
-        
+
         // checks if there are any tasks that are being edited
         var edit_flag = false;
         for (var i = 0; i < task_list.length; i++) {
@@ -195,6 +195,13 @@ const ListOfTabs = () => {
 
     }
 
+    const sendData = () => {
+        const data = {
+            data1: tabs,
+            data2: currentTab
+        };
+        props.onData(data);
+    };
 
     return (
         <>
@@ -280,11 +287,12 @@ const ListOfTabs = () => {
 
                 <div id="tasks">
                     {showTaskList(currentTab) === undefined
-                    ? <div></div>
-                    : showTaskList(currentTab).map(x => (
-                        <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x}/>))}
+                        ? <div></div>
+                        : showTaskList(currentTab).map(x => (
+                            <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x} />))}
                 </div>
             </div>
+            {sendData()};
         </>
     );
 
