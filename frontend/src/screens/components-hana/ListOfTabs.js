@@ -292,7 +292,7 @@ const ListOfTabs = (props) => {
                             <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x} />))}
                 </div>
             </div>
-            {sendData()};
+            {sendData()}
         </>
     );
 
