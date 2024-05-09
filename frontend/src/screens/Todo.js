@@ -2,11 +2,14 @@ import GoalsNotes from './GoalsNotes';
 import PopUpQuotes from './PopUpQuote';
 import ListOfTabs from './components-hana/ListOfTabs'
 import ProgressBar from './components-hana/ProgressBar';
+import ModeButton from './components-hana/ModeToggleButton'
 import { useState } from "react";
 
 function Todo() {
   const [tabs, setTabs] = useState([]);
   const [currentTab, setCurrentTab] = useState("");
+  // dark mode is default
+  const [currentMode, setMode] = useState("dark");
 
   const handleData = (data) => {
     setTabs(data.data1);
@@ -28,8 +31,10 @@ function Todo() {
           <PopUpQuotes />
         </div>
 
-        <div id="dark-mode">
-          <button className="text-zinc-200 font-bold">BUTTON</button>
+        <div id="dark-mode" className="w-1/4">
+          <div className="" >
+            <ModeButton theme={currentMode} />
+          </div>
         </div>
 
       </div>
