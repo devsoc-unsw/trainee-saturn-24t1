@@ -1,32 +1,18 @@
 import GoalsNotes from './GoalsNotes';
 import PopUpQuotes from './PopUpQuote';
 import ListOfTabs from './components-hana/ListOfTabs'
+import ProgressBar from './components-hana/ProgressBar';
 import Alerts from './components-hana/Alerts'
-import { useState, useRef } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { useState } from "react";
 
 function Todo() {
-  // initial state for tabs
-  const [tabs, setTabs] = useState([
-    {
-        id: uuidv4(),
-        name: "Testing",
-        tasks: [
-            {
-                id: uuidv4(),
-                name: "New Task",
-                description: "Task type",
-                due_date: new Date(),
-                checked: false,
-                edit_mode: false,
-                hidden: false
-            }
-        ]
-    }
-]);
+  const [tabs, setTabs] = useState([]);
+  const [currentTab, setCurrentTab] = useState("");
 
-// saves current tab id
-const [currentTab, setCurrentTab] = useState("");
+  const handleData = (data) => {
+    setTabs(data.data1);
+    setCurrentTab(data.data2);
+  };
 
   return (
     <div className="h-screen p-2 bg-[#302E28]">
@@ -53,15 +39,14 @@ const [currentTab, setCurrentTab] = useState("");
 
         <div id="to-do-list" className="min-w-96 mx-2 my-4 basis-1/3">
 
-          <ListOfTabs tabs={tabs} setTabs={setTabs} currentTab={currentTab} setCurrentTab={setCurrentTab}/>
+          <ListOfTabs onData={handleData} />
 
         </div>
 
         <div id="features" className="mx-4 basis-1/3">
-
-          <div id="progress-bar" className="m-1 p-2 bg-[#877070]">
+          <div id="progress-bar" className="m-1 p-2 ">
             {/* shows how many tasks you've completed so far */}
-            PROGRESS BAR
+            <ProgressBar tabs={tabs} currentTab={currentTab} />
           </div>
 
           <div id="alerts" className="m-2 w-full">
@@ -78,7 +63,7 @@ const [currentTab, setCurrentTab] = useState("");
       </div>
 
     </div>
-  );
+  )
 }
 
 export default Todo;

@@ -4,11 +4,33 @@ import Task from "./Task.js";
 import PopUpAlert from "../PopUpAlert.js";
 
 // a component used to add and delete tabs for tasks
-const ListOfTabs = ({tabs, setTabs, currentTab, setCurrentTab}) => {
+const ListOfTabs = (props) => {
+
     const textareaRefs = useRef({});
     // state of editing, receive id as argument
     const [isEditing, setIsEditing] = useState(null);
     const [emptyTab, setEmptyTab] = useState(false);
+    // initial state for tabs
+    const [tabs, setTabs] = useState([
+        {
+            id: uuidv4(),
+            name: "Testing",
+            tasks: [
+                {
+                    id: uuidv4(),
+                    name: "New Task",
+                    description: "Task type",
+                    due_date: new Date(),
+                    checked: false,
+                    edit_mode: false,
+                    hidden: false
+                }
+            ]
+        }
+    ]);
+
+    // saves current tab id
+    const [currentTab, setCurrentTab] = useState("");
 
     // number of tabs limited to 3
     function addTab() {
@@ -142,7 +164,7 @@ const ListOfTabs = ({tabs, setTabs, currentTab, setCurrentTab}) => {
 
     // saves any changes to tasks when switching tabs
     function saveEdit(id) {
-        
+
         const new_tabs = [...tabs];
 
         if (currentTab === "") {
@@ -152,7 +174,7 @@ const ListOfTabs = ({tabs, setTabs, currentTab, setCurrentTab}) => {
 
         const selectedTab = new_tabs.find((tabs) => tabs.id === currentTab);
         const task_list = selectedTab.tasks;
-        
+
         // checks if there are any tasks that are being edited
         var edit_flag = false;
         for (var i = 0; i < task_list.length; i++) {
@@ -171,6 +193,13 @@ const ListOfTabs = ({tabs, setTabs, currentTab, setCurrentTab}) => {
 
     }
 
+    const sendData = () => {
+        const data = {
+            data1: tabs,
+            data2: currentTab
+        };
+        props.onData(data);
+    };
 
     return (
         <>
@@ -256,11 +285,12 @@ const ListOfTabs = ({tabs, setTabs, currentTab, setCurrentTab}) => {
 
                 <div id="tasks">
                     {showTaskList(currentTab) === undefined
-                    ? <div></div>
-                    : showTaskList(currentTab).map(x => (
-                        <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x}/>))}
+                        ? <div></div>
+                        : showTaskList(currentTab).map(x => (
+                            <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x} />))}
                 </div>
             </div>
+            {sendData()}
         </>
     );
 
