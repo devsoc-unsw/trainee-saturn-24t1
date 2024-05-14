@@ -1,3 +1,7 @@
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import DoneIcon from '@mui/icons-material/Done';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 // a singular task component that can be edited and deleted
 const Task = ({tabs, setTabs, currentTab, task}) => {
 
@@ -8,6 +12,9 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
         const selectedTab = new_tabs.find((tabs) => tabs.id === currentTab);
         const new_task = selectedTab.tasks.find((obj) => obj.id === task_id);
 
+        if (new_task.hidden === true) {
+            new_task.hidden = false;
+        }
         new_task.edit_mode = true;
         
         setTabs(new_tabs);
@@ -69,11 +76,30 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
         setTabs(new_tabs);
 
     }
+
+    // hides and unhides the task information
+    function dropdown(task_id) {
+
+        const new_tabs = [...tabs];
+        const selectedTab = new_tabs.find((tabs) => tabs.id === currentTab);
+        const new_task = selectedTab.tasks.find((obj) => obj.id === task_id);
+
+        if (new_task.hidden === true) {
+            new_task.hidden = false;
+
+        } else {
+            new_task.hidden = true;
+        }
+
+        setTabs(new_tabs);
+
+    }
+
     
     return (
-        <div className="flex justify-between m-1">
-            <div className="w-64">
-                <div id="task-1-name" className="flex justify-between p-2 bg-[#495253]">
+        <div className="flex justify-around m-1">
+            <div className="w-5/6">
+                <div id="task-name" className="flex justify-between p-2 bg-[#495253]">
                     {/* div that contains checkbox and task name*/}
                     <div>
                         <input
@@ -89,16 +115,24 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
                         : <textarea
                             id="task-name-edit"
                             placeholder={task.name}
-                            className="mx-2 bg-[#687172] text-[#D7C4A9]"
+                            className="mx-2 bg-[#687172] text-[#D7C4A9] h-6"
                         ></textarea>}
                     </div>
                     {/* dropdown button that show details of the task */}
-                    <button
-                        // onClick={() => dropdown()}
+                    {task.hidden === true
+                    ? <button
+                        onClick={() => dropdown(task.id)}
                         className="text-[#D7C4A9]"
-                    >V</button>
+                    >&lt;</button>
+                    : <button
+                        onClick={() => dropdown(task.id)}
+                        className="text-[#D7C4A9] font-bold"
+                    >V</button>}
                 </div>
-                <div id="task-info" className="py-2 px-3 bg-[#687172]">
+                {/* hides and unhides the task information */}
+                {task.hidden === true
+                ? <div></div>
+                : <div id="task-info" className="py-2 px-3 bg-[#687172]">
                     {/* when the task is in edit mode */}
                     {task.edit_mode === false
                     ? <h3
@@ -112,7 +146,7 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
                         <textarea
                             id="task-description-edit"
                             placeholder={task.description}
-                            className="bg-[#495253] text-[#D7C4A9]"
+                            className="bg-[#495253] text-[#D7C4A9] h-6"
                         ></textarea>
                     </div>}
                     {task.edit_mode === false
@@ -131,6 +165,7 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
                         ></input>
                     </div>}
                 </div>
+                }
             </div>
             <div className="flex flex-col">
                 {/* edits current task */}
@@ -138,17 +173,17 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
                 ? <button
                     onClick={() => editTask(task.id)}
                     className="font-bold"
-                >EDIT</button>
+                ><DriveFileRenameOutlineIcon/></button>
                 : <button
                     onClick={() => saveTask(task.id)}
                     className="font-bold"
-                >SAVE</button>}
+                ><DoneIcon/></button>}
 
                 {/* deletes current task */}
                 <button
                     onClick={() => deleteTask(task.id)}
                     className="font-bold"
-                >DELETE</button>
+                ><DeleteOutlineIcon/></button>
             </div>
         </div>
     )

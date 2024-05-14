@@ -1,8 +1,33 @@
 import GoalsNotes from './GoalsNotes';
 import PopUpQuotes from './PopUpQuote';
 import ListOfTabs from './components-hana/ListOfTabs'
+import Alerts from './components-hana/Alerts'
+import { useState, useRef } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 function Todo() {
+  // initial state for tabs
+  const [tabs, setTabs] = useState([
+    {
+        id: uuidv4(),
+        name: "Testing",
+        tasks: [
+            {
+                id: uuidv4(),
+                name: "New Task",
+                description: "Task type",
+                due_date: new Date(),
+                checked: false,
+                edit_mode: false,
+                hidden: false
+            }
+        ]
+    }
+]);
+
+// saves current tab id
+const [currentTab, setCurrentTab] = useState("");
+
   return (
     <div className="h-screen p-2 bg-[#302E28]">
       <div id="header" className="grid grid-cols-3 justify-around m-2 py-4
@@ -26,9 +51,9 @@ function Todo() {
 
       <div id="body" className="flex justify-center">
 
-        <div id="to-do-list" className="min-w-96 m-4 basis-1/3">
+        <div id="to-do-list" className="min-w-96 mx-2 my-4 basis-1/3">
 
-          <ListOfTabs />
+          <ListOfTabs tabs={tabs} setTabs={setTabs} currentTab={currentTab} setCurrentTab={setCurrentTab}/>
 
         </div>
 
@@ -39,10 +64,9 @@ function Todo() {
             PROGRESS BAR
           </div>
 
-          <div id="alerts" className="m-2 py-3 px-5 bg-[#D4DCFF] rounded-lg">
+          <div id="alerts" className="m-2 w-full">
             {/* shows all tasks that have due dates - the earliest task is shown first */}
-            {/* <img></img> */}
-            <p>TASK is due in X days!</p>
+            <Alerts tabs={tabs} currentTab={currentTab}/>
           </div>
 
           <div id="goals-notes" className="m-2 w-full">

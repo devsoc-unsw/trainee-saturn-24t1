@@ -4,28 +4,11 @@ import Task from "./Task.js";
 import PopUpAlert from "../PopUpAlert.js";
 
 // a component used to add and delete tabs for tasks
-const ListOfTabs = () => {
+const ListOfTabs = ({tabs, setTabs, currentTab, setCurrentTab}) => {
     const textareaRefs = useRef({});
     // state of editing, receive id as argument
     const [isEditing, setIsEditing] = useState(null);
     const [emptyTab, setEmptyTab] = useState(false);
-    // initial state for tabs
-    const [tabs, setTabs] = useState([
-        {
-            id: uuidv4(),
-            name: "Testing",
-            tasks: [
-                {
-                    id: uuidv4(),
-                    name: "New Task",
-                    description: "Task type",
-                    due_date: new Date(),
-                    checked: false,
-                    edit_mode: false
-                }
-            ]
-        }
-    ]);
 
     // number of tabs limited to 3
     function addTab() {
@@ -38,16 +21,7 @@ const ListOfTabs = () => {
             const new_tab = {
                 id: uuidv4(),
                 name: "New Tab",
-                tasks: [
-                    {
-                        id: uuidv4(),
-                        name: "New Task",
-                        description: "Task type",
-                        due_date: new Date(),
-                        checked: false,
-                        edit_mode: false
-                    }
-                ]
+                tasks: []
             }
 
             const new_tabs = [...tabs];
@@ -65,8 +39,12 @@ const ListOfTabs = () => {
             editTabText(currentTab);
             return;
         }
+
         const new_tabs = [...tabs].filter((obj) => obj.id !== id);
-        setCurrentTab("");
+        // if the tab being deleted is the current tab
+        if (id === currentTab) {
+            setCurrentTab("");
+        }
         setTabs(new_tabs);
     }
 
@@ -137,9 +115,6 @@ const ListOfTabs = () => {
 
     }
 
-    // saves current tab id
-    const [currentTab, setCurrentTab] = useState("");
-
     function addTask() {
 
         const new_tabs = [...tabs];
@@ -155,7 +130,8 @@ const ListOfTabs = () => {
             description: "Task type",
             due_date: new Date(),
             checked: false,
-            edit_mode: false
+            edit_mode: false,
+            hidden: false
         }
 
         selectedTab.tasks.push(new_task);
@@ -263,7 +239,7 @@ const ListOfTabs = () => {
                     ? <div>No tabs selected</div>
                     : <div className="flex justify-between p-2">
                         <div className="task-title">
-                            <h2 className="px-2 text-[#3C3C3C] font-bold">TASKS</h2>
+                            <h2 className="text-[#3C3C3C] text-2xl font-bold">TASKS</h2>
                             <h3 className="text-[#3C3C3C]">{
                                 showTaskList(currentTab) === undefined
                                     ? 0
@@ -273,8 +249,8 @@ const ListOfTabs = () => {
                         <div className="add-task">
                             <button
                                 onClick={() => addTask()}
-                                className="m-1 p-2 bg-[#707C87] text-[#E9E9E9] rounded-lg"
-                            >ADD TASKS</button>
+                                className="m-1 p-2 bg-[#707C87] text-[#E9E9E9] text-sm rounded-xl"
+                            >ADD TASK +</button>
                         </div>
                     </div>}
 
