@@ -19,11 +19,6 @@ function App() {
 
   return (
     <div>
-      <div className='flex justify-evenly'>
-        <button onClick={() => navigate('/todo')}>To do</button>
-        <button onClick={() => navigate('/')}>Landing</button>
-        <button onClick={() => navigate('/rest')}>Rest</button>
-      </div>
       <Routes>
         <Route path='/' element={<Landing isDarkMode={isDarkMode} handleModeChange={handleModeChange} />} />
         <Route path='/todo' element={<Todo isDarkMode={isDarkMode} handleModeChange={handleModeChange} />} />
