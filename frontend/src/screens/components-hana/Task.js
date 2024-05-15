@@ -99,7 +99,12 @@ const Task = ({ tabs, setTabs, currentTab, task, isDarkMode }) => {
   return (
     <div className="flex justify-around my-1">
       <div className="w-5/6">
-        <div id="task-name" className="flex justify-between p-2 bg-[#495253] rounded-sm">
+        <div id="task-name"
+          className={
+            isDarkMode === true
+              ? "flex justify-between p-2 bg-[#495253] rounded-sm"
+              : "flex justify-between p-2 bg-[#FFE7B9] rounded-sm"
+          }>
           {/* div that contains checkbox and task name*/}
           <div className='flex item-center'>
             <input
@@ -111,12 +116,19 @@ const Task = ({ tabs, setTabs, currentTab, task, isDarkMode }) => {
             {task.edit_mode === false
               ? <label
                 id="task-name"
-                className="mx-2 my-1 text-[#D7C4A9] font-medium"
+                className={
+                  isDarkMode === true
+                    ? "mx-2 my-1 text-[#D7C4A9] font-medium"
+                    : "mx-2 my-1 text-[#302E28] font-medium"
+                }
               >{task.name}</label>
               : <textarea
                 id="task-name-edit"
                 placeholder={task.name}
-                className="mx-2 px-1 bg-[#687172] text-[#D7C4A9] h-6 rounded-sm"
+                className={
+                  isDarkMode === true
+                    ? "mx-2 px-1 bg-[#687172] text-[#D7C4A9] h-6 rounded-sm"
+                    : "mx-2 px-1 bg-[#FFF2DB] text-[#302E28] h-6 rounded-sm"}
               ></textarea>}
           </div>
           {/* dropdown button that show details of the task */}
@@ -132,36 +144,64 @@ const Task = ({ tabs, setTabs, currentTab, task, isDarkMode }) => {
         {/* hides and unhides the task information */}
         {task.hidden === true
           ? <div></div>
-          : <div id="task-info" className="py-2 px-3 bg-[#687172] rounded-sm">
+          : <div id="task-info"
+            className={
+              isDarkMode === true
+                ? "py-2 px-3 bg-[#687172] rounded-sm"
+                : "py-2 px-3 bg-[#FFF2DB] rounded-sm"
+            }>
             {/* when the task is in edit mode */}
             {task.edit_mode === false
               ? <h3
                 id="task-description"
-                className="mx-1 text-[#D7C4A9]"
+                className={
+                  isDarkMode === true
+                    ? "mx-1 text-[#D7C4A9]"
+                    : "mx-1 text-[#302E28]"
+                }
               >Description: {task.description}</h3>
               : <div className='mx-1 flex item-center my-1'>
                 <label
-                  className="text-[#D7C4A9]"
+                  className={
+                    isDarkMode === true
+                      ? "text-[#D7C4A9]"
+                      : "text-[#302E28]"
+                  }
                 >Description: </label>
                 <textarea
                   id="task-description-edit"
                   placeholder={task.description}
-                  className="mx-1 px-1 bg-[#495253] text-[#D7C4A9] h-6 rounded-sm"
+                  className={
+                    isDarkMode === true
+                      ? "mx-1 px-1 bg-[#495253] text-[#D7C4A9] h-6 rounded-sm"
+                      : "mx-1 px-1 bg-[#FFE7B9] text-[#302E28] h-6 rounded-sm"
+                  }
                 ></textarea>
               </div>}
             {task.edit_mode === false
               ? <h3
                 id="task-due-date"
-                className="mx-1 text-[#D7C4A9]"
+                className={
+                  isDarkMode === true
+                    ? "mx-1 text-[#D7C4A9]"
+                    : "mx-1 text-[#302E28]"
+                }
               >Due date: {task.due_date.toDateString()}</h3>
               : <div className='flex item-center'>
                 <label
-                  className="mx-1 text-[#D7C4A9]"
+                  className={
+                    isDarkMode === true
+                      ? "mx-1 text-[#D7C4A9]"
+                      : "mx-1 text-[#302E28]"}
                 >Due date: </label>
                 <input
                   type="date"
                   id="task-due-date-edit"
-                  className="mx-1 px-1 bg-[#495253] text-[#D7C4A9] rounded-sm"
+                  className={
+                    isDarkMode === true
+                      ? "mx-1 px-1 bg-[#495253] text-[#D7C4A9] rounded-sm"
+                      : "mx-1 px-1 bg-[#FFE7B9] text-[#302E28] rounded-sm"
+                  }
                 ></input>
               </div>}
           </div>
