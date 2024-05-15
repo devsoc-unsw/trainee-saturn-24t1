@@ -60,7 +60,7 @@ function Todo({ isDarkMode, handleModeChange }) {
 
           <div id="alerts" className="m-2 w-full">
             {/* shows all tasks that have due dates - the earliest task is shown first */}
-            <Alerts tabs={tabs} currentTab={currentTab} />
+            <Alerts tabs={tabs} currentTab={currentTab} isDarkMode={isDarkMode} />
           </div>
 
           <div id="goals-notes" className="m-2 w-full">
