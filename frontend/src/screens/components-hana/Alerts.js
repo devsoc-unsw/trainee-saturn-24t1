@@ -15,7 +15,6 @@ const Alerts = ({tabs, currentTab}) => {
     for (var i = 0; i < task_list.length; i++) {
         if (
             Math.round((task_list[i].due_date - todayDate) / (1000 * 3600 * 24)) <= 7 &&
-            Math.round((task_list[i].due_date - todayDate) / (1000 * 3600 * 24)) !== 0 &&
             !(Math.round((task_list[i].due_date - todayDate) / (1000 * 3600 * 24)) < 0)
         ) {
             taskFlag = true;
@@ -31,9 +30,10 @@ const Alerts = ({tabs, currentTab}) => {
                 ? <div>No tasks due!</div>
                 : task_list.map(x => (
                     (Math.round((x.due_date - todayDate) / (1000 * 3600 * 24)) <= 7 &&
-                    Math.round((x.due_date - todayDate) / (1000 * 3600 * 24)) !== 0 &&
                     !(Math.round((x.due_date - todayDate) / (1000 * 3600 * 24)) < 0))
-                    ? <div>The task <span className='font-bold'>{x.name}</span> is due in <span className='font-bold'>{Math.round((x.due_date - todayDate) / (1000 * 3600 * 24))}</span> days!</div>
+                    ? Math.round((x.due_date - todayDate) / (1000 * 3600 * 24)) !== 0
+                        ? <div>The task <span className='font-bold'>{x.name}</span> is due in <span className='font-bold'>{Math.round((x.due_date - todayDate) / (1000 * 3600 * 24))}</span> days!</div>
+                        : <div>The task <span className='font-bold'>{x.name}</span> is due in <span className='font-bold'>today</span>!</div>
                     : <div></div>
                 ))}
             </div>

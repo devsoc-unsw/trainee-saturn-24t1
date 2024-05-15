@@ -215,8 +215,8 @@ const ListOfTabs = (props) => {
                     <div
                         className={
                             x.id === currentTab
-                                ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB] font-bold rounded-t-lg"
-                                : "py-1 px-3 text-[#3C3C3C] bg-[#62A193] rounded-t-lg"
+                                ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB] font-bold rounded-t-xl"
+                                : "py-1 px-3 text-[#3C3C3C] bg-[#62A193] rounded-t-xl"
                         }
                     >
                         <button
@@ -251,23 +251,23 @@ const ListOfTabs = (props) => {
                             onClick={() => deleteTab(x.id)}
                             className={
                                 x.id === currentTab
-                                    ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB] rounded-t-lg"
-                                    : "py-1 px-3 text-[#3C3C3C] bg-[#62A193] rounded-t-lg"
+                                    ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB]"
+                                    : "py-1 px-3 text-[#3C3C3C] bg-[#62A193]"
                             }
                         >x</button>
                     </div >))
                 }
                 <button
                     onClick={() => addTab()}
-                    className="py-2 px-4 text-[#3C3C3C] bg-[#B1C9DF] font-bold rounded-t-lg"
+                    className="py-2 px-4 text-[#3C3C3C] bg-[#B1C9DF] font-bold rounded-t-xl"
                 >+</button>
             </div >
 
-            <div id="tasks-info" className="p-4 bg-[#80CDBB]">
+            <div id="tasks-info" className="p-4 bg-[#80CDBB] rounded-b-lg">
                 {showTaskList(currentTab) === undefined
                     ? <div>No tabs selected</div>
-                    : <div className="flex justify-between p-2">
-                        <div className="task-title">
+                    : <div className="flex justify-between p-2 pb-3">
+                        <div className="mx-3">
                             <h2 className="text-[#3C3C3C] text-2xl font-bold">TASKS</h2>
                             <h3 className="text-[#3C3C3C]">{
                                 showTaskList(currentTab) === undefined
@@ -278,7 +278,7 @@ const ListOfTabs = (props) => {
                         <div className="add-task">
                             <button
                                 onClick={() => addTask()}
-                                className="m-1 p-2 bg-[#707C87] text-[#E9E9E9] text-sm rounded-xl"
+                                className="mx-2 my-1 px-3 py-1 bg-[#707C87] text-[#E9E9E9] text-sm rounded-2xl font-semibold hover:bg-[#5B656D]"
                             >ADD TASK +</button>
                         </div>
                     </div>}
