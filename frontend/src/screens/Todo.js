@@ -4,24 +4,11 @@ import ListOfTabs from './components-hana/ListOfTabs'
 import ProgressBar from './components-hana/ProgressBar';
 import ModeButton from './components-hana/ModeToggleButton'
 import Alerts from './components-hana/Alerts'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-function Todo() {
+function Todo({ isDarkMode, handleModeChange }) {
   const [tabs, setTabs] = useState([]);
   const [currentTab, setCurrentTab] = useState("");
-  // dark mode is default
-  const [isDarkMode, setDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem('isDarkMode');
-    return savedMode !== null ? JSON.parse(savedMode) : true;
-  });
-
-  const handleModeChange = (newMode) => {
-    setDarkMode(newMode);
-  }
-
-  useEffect(() => {
-    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
-  }, [isDarkMode]);
 
   const handleData = (data) => {
     setTabs(data.data1);
