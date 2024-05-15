@@ -1,24 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ModeButton from './components-hana/ModeToggleButton';
 
 /* Timer for rest page: no stop or start button, it just tracks how long you've been on the page for */
-function Timer() {
+function Timer({ isDarkMode }) {
     const [time, setTime] = useState(0);
 
-    useEffect(() => {const interval = setInterval(() => {setTime((prevTime) => prevTime + 1);}, 1000); 
-    return () => clearInterval(interval);}, []);
+    useEffect(() => {
+        const interval = setInterval(() => { setTime((prevTime) => prevTime + 1); }, 1000);
+        return () => clearInterval(interval);
+    }, []);
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      };
+    };
 
-    return (<div className="text-white font-bold absolute top-4 left-4"><p>{formatTime(time)}</p></div>);
+    return (
+        <div className={
+            isDarkMode === true
+                ? "text-[#FBFBFB] font-bold absolute top-4 left-4"
+                : "text-[#302E28] font-bold absolute top-4 left-4"
+        }>
+            <p>{formatTime(time)}</p>
+        </div>);
 }
 
-function Rest() {
-  /* Positive affirmation generator */
+function Rest({ isDarkMode, handleModeChange }) {
+    /* Positive affirmation generator */
     const navigate = useNavigate();
 
     const foodAffirmations = [
@@ -71,32 +81,60 @@ function Rest() {
     };
 
     return (
-        <div className="relative flex h-screen p-2 bg-[#302E28]">
+        <div className={
+            isDarkMode === true
+                ? "relative flex h-screen p-2 bg-[#302E28]"
+                : "relative flex h-screen p-2 bg-[#FFFDEE]"
+        }>
             <div className="w-1/4 p-4 flex flex-col justify-between">
                 <div className="flex flex-col items-center">
                     <h1 className="text-3xl font-bold">
-                      <span className="text-zinc-200">Achieve</span><span className="text-[#2ADCB1]">Mint</span>
+                        <span className={
+                            isDarkMode === true
+                                ? "text-[#FBFBFB]"
+                                : "text-[#302E28]"}>
+                            Achieve
+                        </span>
+                        <span className="text-[#2ADCB1]">Mint</span>
                     </h1>
 
                     {/* Buttons for rest page */}
-                    <button className="bg-[#FFFFFF] hover:bg-[#CCCCCC] font-bold text-[#3C3C3C] bg-white rounded-xl p-3 m-1.5 flex items-center space-x-2" onClick={handleButtonClick}><span>&#8592;</span> <span>Back to Landing Page</span></button>
-                    <Timer />
+                    <button className={
+                        isDarkMode === true
+                            ? "bg-[#FBFBFB] hover:bg-[#CCCCCC] font-bold text-[#302E28] rounded-xl p-3 m-1.5 flex items-center space-x-2"
+                            : "bg-[#302E28] hover:bg-[#CCCCCC] font-bold text-[#FBFBFB] rounded-xl p-3 m-1.5 flex items-center space-x-2"
+                    }
+                        onClick={handleButtonClick}><span>&#8592;</span> <span>Back to Landing Page</span></button>
+                    <Timer isDarkMode={isDarkMode} />
                 </div>
                 <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center">HUNGRY?</div>
-                    <p className="mt-2 text-white text-center">{foodAffirmations[foodIndex]}</p>
+                    <p className={
+                        isDarkMode === true
+                            ? "mt-2 text-[#FBFBFB] text-center"
+                            : "mt-2 text-[#302E28] text-center"
+                    }>{foodAffirmations[foodIndex]}</p>
                     <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeFoodAffirmation}>Next Affirmation</button>
                 </div>
                 <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center">NEED FRESH AIR?</div>
-                    <p className="mt-2 text-white text-center">{outdoorAffirmations[outdoorIndex]}</p>
+                    <p className={
+                        isDarkMode === true
+                            ? "mt-2 text-[#FBFBFB] text-center"
+                            : "mt-2 text-[#302E28] text-center"
+                    }>{outdoorAffirmations[outdoorIndex]}</p>
                     <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeOutdoorAffirmation}>Next Affirmation</button>
                 </div>
                 <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center">TIRED & BURNT OUT?</div>
-                    <p className="mt-2 text-white text-center">{comfortAffirmations[comfortIndex]}</p>
+                    <p className={
+                        isDarkMode === true
+                            ? "mt-2 text-[#FBFBFB] text-center"
+                            : "mt-2 text-[#302E28] text-center"
+                    }>{comfortAffirmations[comfortIndex]}</p>
                     <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeComfortAffirmation}>Next Affirmation</button>
                 </div>
+
             </div>
 
             {/* Categories for rest page */}
@@ -104,50 +142,65 @@ function Rest() {
                 <div className="flex flex-col items-center">
                     <div className="mt-8 w-3/4 flex flex-col items-center self-center px-4 py-2 rounded bg-gradient-to-r from-green-200 to-blue-200">
                         <h2 className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#2ADCB1]">TAKE A BREAK & DE-STRESS</h2>
-                        <p1 style={{ color: "#000000" }}>It's important to step back, take a deep breath, and relax. Here are some activities to help you unwind!</p1>
+                        <p1 style={{ color: "#302E28" }}>It's important to step back, take a deep breath, and relax. Here are some activities to help you unwind!</p1>
                     </div>
-
                     <div className="mt-8 w-full flex flex-col items-center">
-                        <h2 className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
+                        <h2 className={
+                            isDarkMode === true
+                                ? "text-2xl font-bold mt-8 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
+                                : "text-2xl font-bold mt-8 self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
+                        }>
                             FOOD SUGGESTIONS
                         </h2>
                         <div className="image-row">
-                            <div className="image-box"></div> {/* Image Box 1 */}
-                            <div className="image-box"></div> {/* Image Box 2 */}
-                            <div className="image-box"></div> {/* Image Box 3 */}
-                            <div className="image-box"></div> {/* Image Box 4 */}
-                            <div className="image-box"></div> {/* Image Box 5 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 1 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 2 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 3 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 4 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 5 */}
                         </div>
                     </div>
 
                     <div className="mt-8 w-full flex flex-col items-center">
-                        <h2 className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
+                        <h2 className={
+                            isDarkMode === true
+                                ? "text-2xl font-bold mt-8 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
+                                : "text-2xl font-bold mt-8 self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
+                        }>
                             OUTDOOR ACTIVITIES
                         </h2>
                         <div className="image-row">
-                            <div className="image-box"></div> {/* Image Box 1 */}
-                            <div className="image-box"></div> {/* Image Box 2 */}
-                            <div className="image-box"></div> {/* Image Box 3 */}
-                            <div className="image-box"></div> {/* Image Box 4 */}
-                            <div className="image-box"></div> {/* Image Box 5 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 1 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 2 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 3 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 4 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 5 */}
                         </div>
                     </div>
 
                     <div className="mt-8 w-full flex flex-col items-center">
-                        <h2 className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
+                        <h2 className={
+                            isDarkMode === true
+                                ? "text-2xl font-bold mt-8 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
+                                : "text-2xl font-bold mt-8 self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
+                        }>
                             COMFORT ACTIVITIES
                         </h2>
                         <div className="image-row">
-                            <div className="image-box"></div> {/* Image Box 1 */}
-                            <div className="image-box"></div> {/* Image Box 2 */}
-                            <div className="image-box"></div> {/* Image Box 3 */}
-                            <div className="image-box"></div> {/* Image Box 4 */}
-                            <div className="image-box"></div> {/* Image Box 5 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 1 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 2 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 3 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 4 */}
+                            <div className={isDarkMode === true ? "image-box" : "image-box-dark"}></div> {/* Image Box 5 */}
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div id="mode-button" className="w-auto">
+                <div className="" >
+                    <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
+                </div>
+            </div>
             {/* styles for image boxes that will b replaced by the images  */}
             <style>
                 {`
@@ -164,7 +217,15 @@ function Rest() {
                     transition: transform 0.3s ease;
                 }
 
-                .image-box:hover {
+                .image-box-dark {
+                    width: 190px;
+                    height: 90px;
+                    border: 2px solid #302E28;
+                    margin: 8px;
+                    transition: transform 0.3s ease;
+                }
+
+                .image-box:hover, .image-box-dark:hover {
                     transform: scale(1.4);
                 }
                 `}
