@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function PopUpQuotes() {
+const PopUpQuotes = ({ isDarkMode }) => {
     const [quote, setQuote] = useState("");
 
     // fetch API 
@@ -28,7 +28,11 @@ function PopUpQuotes() {
     }
 
     return <>
-        <div id="quote-box" className="hidden flex object-right mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg">
+        <div id="quote-box"
+            className={
+                isDarkMode === true
+                    ? "hidden flex object-right mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg"
+                    : "hidden flex object-right mx-4 py-2 px-5 bg-[#BEE6CC] rounded-lg"}>
             <p className="text-[#3C3C3C]"> {quote.content} </p>
             <button id="closeButton" className="font-bold mx-2"
                 onClick={closeClicked}>x</button>
