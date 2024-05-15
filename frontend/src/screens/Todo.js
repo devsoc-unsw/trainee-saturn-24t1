@@ -2,6 +2,7 @@ import GoalsNotes from './GoalsNotes';
 import PopUpQuotes from './PopUpQuote';
 import ListOfTabs from './components-hana/ListOfTabs'
 import ProgressBar from './components-hana/ProgressBar';
+import Alerts from './components-hana/Alerts'
 import { useState } from "react";
 
 function Todo() {
@@ -36,7 +37,7 @@ function Todo() {
 
       <div id="body" className="flex justify-center">
 
-        <div id="to-do-list" className="min-w-96 m-4 basis-1/3">
+        <div id="to-do-list" className="min-w-96 mx-2 my-4 basis-1/3">
 
           <ListOfTabs onData={handleData} />
 
@@ -48,10 +49,9 @@ function Todo() {
             <ProgressBar tabs={tabs} currentTab={currentTab} />
           </div>
 
-          <div id="alerts" className="m-2 py-3 px-5 bg-[#D4DCFF] rounded-lg">
+          <div id="alerts" className="m-2 w-full">
             {/* shows all tasks that have due dates - the earliest task is shown first */}
-            {/* <img></img> */}
-            <p>TASK is due in X days!</p>
+            <Alerts tabs={tabs} currentTab={currentTab}/>
           </div>
 
           <div id="goals-notes" className="m-2 w-full">
