@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
+import ModeButton from './components-hana/ModeToggleButton'
 // import axios from 'axios';
 import {
   useNavigate,
 } from 'react-router-dom';
 
-function Landing() {
+function Landing({ isDarkMode, handleModeChange }) {
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -32,15 +33,39 @@ function Landing() {
 
 
   return (
-    <div className="p-3 flex flex-col bg-[#302E28] items-center text-center h-screen align-middle">
-      <div className="w-full text-left font-bold text-3xl">
-        <span className="text-white">Achieve</span>
-        <span className="text-[#80CDBB]">Mint</span>
+    <div className={
+      isDarkMode === true
+        ? "p-3 flex flex-col bg-[#302E28] items-center text-center h-screen align-middle"
+        : "p-3 flex flex-col bg-[#FFFDEE] items-center text-center h-screen align-middle"}>
+      <div className="grid grid-cols-3 justify-between m-2 py-4 place-items-center h-1/5 w-full">
+        <div className="w-full text-center font-bold text-3xl">
+          <span className={
+            isDarkMode === true
+              ? "text-[#FBFBFB]"
+              : "text-[#302E28]"
+          }>Achieve</span>
+          <span className="text-[#2ADCB1]">Mint</span>
+        </div>
+        <div>{/*empty div, aligning purposes*/}</div>
+        <div id="mode-button" className="w-1/4">
+          <div className="" >
+            <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
+          </div>
+        </div>
       </div>
-      <div className="m-auto p-3 bg-[#80CDBB] h-3/5 w-3/5 text-center rounded-xl justify-center items-center align-middle">
+
+      <div className={
+        isDarkMode === true
+          ? "m-auto p-3 bg-[#80CDBB] h-3/5 w-3/5 text-center rounded-xl justify-center items-center align-middle"
+          : "m-auto p-3 bg-[#BEE6CC] h-3/5 w-3/5 text-center rounded-xl justify-center items-center align-middle"
+      }>
         <div className="w-4/5 m-auto">
           {/* welcome message */}
-          <p className="font-bold text-[#3C3C3C] text-lg mt-10 mb-10">
+          <p className={
+            isDarkMode === true
+              ? "font-bold text-[#3C3C3C] text-lg mt-10 mb-10"
+              : "font-bold text-[#3C3C3C] text-lg mt-10 mb-10"
+          }>
             Welcome to AchieveMint! This is a web application that helps you with tracking your
             tasks and goals. Are you here to:
           </p>
@@ -53,7 +78,7 @@ function Landing() {
         </div>
       </div>
 
-    </div>
+    </div >
   );
 }
 
