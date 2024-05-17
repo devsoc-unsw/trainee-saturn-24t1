@@ -52,8 +52,13 @@ function Rest() {
 
     const foodAffirmations = [
         "You are what you eat. Choose foods that nourish your body and soul.",
+        "Savouring a meal with loved ones creates lasting memories and strengthens bonds.",
+        "Indulge in treats occasionally. Life is too short to skip dessert!",
+        "Treat yourself to the Italian goodness of Vapiano Pasta.",
+        "Indulge in a scoop of happiness from Messina. Let every lick be a sweet escape.",
         "Enjoying a delicious meal is a form of self care. Take your time and savor every bite.",
         "Feeling like you could eat a horse? Trot over to Yallah Eats.",
+        "Spice up your day at Time for Thai. Let each bite be a culinary adventure.",
         "Soul Origin's iced coffee is like a cold splash of motivation",
         "Food is fuel for your body. Choose meals that give you energy and vitality.",
         "Eating mindfully can help you appreciate the taste, texture, and aroma of your food."
@@ -61,22 +66,35 @@ function Rest() {
 
     const outdoorAffirmations = [
         "Nature has a way of refreshing your mind, body, and spirit.",
-        "Take a stroll on the UNSW walking track and soak up some Vitamin D",
+        "Let art be your escape. Lose yourself in the colors at the Art Gallery of NSW.",
+        "Feel the adrenaline as you speed through the tracks at Moore Park Go Karting.",
+        "Let the waves of Coogee Beach wash away your worries",
+        "Find solace in the simplicity of a sunset or the gentle rustle of leaves in the wind.",
+        "Take a stroll on the UNSW walking track and soak up some Vitamin D.",
+        "Dive into the world of arcade fun and let your inner child run wild!.",
+        "Take a spin at Luna Park and rediscover the thrill of being carefree.",
         "Breathing in fresh air can invigorate your senses and clear your mind.",
-        "Step outside and take a deep breath.",
+        "Embrace the thrill of defying gravity at Centennial Park's Flying Trapeze.",
+        "Step outside and take a deep breath, and surround yourself with positivity.",
+        "Enjoy a game of badminton at Moore Park. Soak in the joy of friendly competition.",
         "Connecting with nature can inspire creativity and reduce stress. ",
         "Spending time outdoors can improve your mood and boost your immune system.",
     ];
 
     const comfortAffirmations = [
         "Taking time to relax is essential for your well-being.",
-        "Give yourself permission to rest and recharge.",
+        "Curl up and unwind with Netflix. Let every show be an escape into entertainment.",
+        "Sweat it out at Anytime Fitness. Each rep brings you closer to your strongest self.",
+        "Remember to give yourself some downtime to recharge. Take care of yourself.",        
         "Comfort activities can help you unwind and reduce stress.",
+        "Retail therapy awaits! Explore the aisles and treat yourself to something special.",
+        "Take a moment to unwind at Centennial Park. Let nature soothe your soul.",
+        "Escape into another world at Hoyts. Let every movie be a journey of imagination.",
         "Pamper yourself with self-care habits that make you feel good inside and out.",
         "Surround yourself with things that bring you comfort.",
         "Finding comfort in small moments can bring a sense of contentment and happiness.",
-        "Cherish the little things in life.",
-        "Slip into the UNSW sleeping pod for a quick recharge."
+        "Slip into the UNSW sleeping pod for a quick recharge.",
+        "Don't forget to appreciate the small joys life brings. Those little moments matter."
     ];
 
     const [foodIndex, setFoodIndex] = useState(0);
@@ -133,7 +151,7 @@ function Rest() {
                 <div className="flex flex-col items-center">
                     <div className="mt-8 w-3/4 flex flex-col items-center self-center px-4 py-2 rounded bg-gradient-to-r from-green-200 to-blue-200">
                         <h2 className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#2ADCB1]">TAKE A BREAK & DE-STRESS</h2>
-                        <p1 style={{ color: "#000000" }}>It's important to step back, take a deep breath, and relax. Here are some activities to help you unwind!</p1>
+                        <p style={{ color: "#000000" }}>It's important to step back, take a deep breath, and relax. Here are some activities to help you unwind!</p>
                     </div>
 
                     <div className="mt-8 w-full flex flex-col items-center">
