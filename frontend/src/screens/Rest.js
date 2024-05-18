@@ -150,14 +150,14 @@ function Rest() {
             <div className="w-3/4">
                 <div className="flex flex-col items-center">
                     <div className="mt-8 w-3/4 flex flex-col items-center self-center px-4 py-2 rounded bg-gradient-to-r from-green-200 to-blue-200">
-                        <h2 className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#2ADCB1]">TAKE A BREAK & DE-STRESS</h2>
+                        <h className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#2ADCB1]">TAKE A BREAK & DE-STRESS</h>
                         <p style={{ color: "#000000" }}>It's important to step back, take a deep breath, and relax. Here are some activities to help you unwind!</p>
                     </div>
 
                     <div className="mt-8 w-full flex flex-col items-center">
-                        <h2 className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
+                        <h className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
                             FOOD SUGGESTIONS
-                        </h2>
+                        </h>
 
                     <div className="image-container">
                         <div className="image-row">
@@ -215,9 +215,9 @@ function Rest() {
 
                     <div className="mt-8 w-full flex flex-col items-center">
                         
-                        <h2 className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
+                        <h className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
                             OUTDOOR ACTIVITIES
-                        </h2>
+                        </h>
                     <div className="image-container">
                         <div className="image-row">  
                           
@@ -368,7 +368,7 @@ function Rest() {
     .image-box {
         width: 190px;
         height: 100px;
-        border: 1.5px solid white;
+        border: 0.5px solid white;
         margin-right: 5px;
         transition: transform 0.3s ease;
     }
