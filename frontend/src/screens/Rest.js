@@ -30,21 +30,43 @@ import image27 from './images/image27.jpeg';
 import image28 from './images/image28.jpeg';
 import image29 from './images/image29.jpeg';
 
-/* Timer for rest page: no stop or start button, it just tracks how long you've been on the page for */
+/* Timer for rest page: tracks how long you've been on the page for */
 function Timer() {
     const [time, setTime] = useState(0);
+    const [isActive, setIsActive] = useState(false);
 
-    useEffect(() => {const interval = setInterval(() => {setTime((prevTime) => prevTime + 1);}, 1000); 
-    return () => clearInterval(interval);}, []);
+    useEffect(() => {
+        let interval = null;
+        if (isActive) {
+            interval = setInterval(() => {
+                setTime((prevTime) => prevTime + 1);
+            }, 1000);
+        } else if (!isActive && time !== 0) {
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    }, [isActive, time]);
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
         return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      };
+    };
 
-    return (<div className="text-white font-bold absolute top-4 left-4"><p>{formatTime(time)}</p></div>);
+    const startTimer = () => setIsActive(true);
+    const stopTimer = () => setIsActive(false);
+
+    return (
+        <div className="text-white font-bold mt-4 flex flex-col items-center">
+            <div className="flex mt-4 items space-x-2">
+                <button className="bg-[#FFFFFF] hover:bg-[#99FF99] text-black font-bold px-2 py-1 rounded-lg" onClick={startTimer}>Start Break</button>
+                <button className="bg-[#FFFFFF] hover:bg-[#FF9999] text-black font-bold px-2 py-1 rounded-lg" onClick={stopTimer}>Stop Break</button>
+                <p className="text-3xl">{formatTime(time)}</p>
+            </div>
+        </div>
+    );
 }
+
 
 function Rest() {
   /* Positive affirmation generator */
@@ -156,9 +178,9 @@ function Rest() {
         </div>
 
                     <div className="mt-8 w-full flex flex-col items-center">
-                        <h className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
-                            FOOD SUGGESTIONS
-                        </h>
+                    <h className="text-xl font-cursive font-bold mt-8 self-center rounded text-white shadow-black transition duration-300 transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                        FOOD SUGGESTIONS
+                    </h>
 
                     <div className="image-container">
                         <div className="image-row">
@@ -215,10 +237,9 @@ function Rest() {
                 </div>
 
                     <div className="mt-8 w-full flex flex-col items-center">
-                        
-                        <h className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
-                            OUTDOOR ACTIVITIES
-                        </h>
+                    <h className="text-xl font-cursive font-bold mt-8 self-center rounded text-white shadow-black transition duration-300 transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                        OUTDOOR ACTIVITIES
+                    </h>
                     <div className="image-container">
                         <div className="image-row">  
                           
@@ -299,9 +320,9 @@ function Rest() {
                  </div>
 
                     <div className="mt-8 w-full flex flex-col items-center">
-                        <h2 className="text-2xl font-bold mt-8 self-center rounded text-white transition duration-300 transform hover:scale-105">
-                            COMFORT ACTIVITIES
-                        </h2>
+                    <h className="text-xl font-cursive font-bold mt-8 self-center rounded text-white shadow-black transition duration-300 transform hover:scale-105 hover:rotate-2 hover:shadow-xl ">
+                        COMFORT ACTIVITIES
+                    </h>
                     <div className="image-container">
                         <div className="image-row">
                         
@@ -355,33 +376,34 @@ function Rest() {
      {/* styles for image boxes  */}
     <style>
     {`
-    .image-container {
-        width: 90%;
-        overflow-x: auto;
-        white-space: nowrap;
-        height: 120px; 
-    }
+   
+   .image-container {
+    width: 90%; 
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 110px; 
+    margin-bottom: 18px; 
+}
 
-    .image-row {
-        display: inline-flex;
-    }
+.image-row {
+    display: flex; 
+}
 
-    .image-box {
-        width: 190px;
-        height: 100px;
-        border: 0.5px solid white;
-        margin-right: 5px;
-        transition: transform 0.3s ease;
-    }
+.image-box {
+    width: 200px;
+    height: 105px;
+    border: 1.0px solid white;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-right: 15px; 
 
-    .image-box:last-child {
-        margin-right: 10;
-    }
+}
 
-    .image-box:hover {
-        transform: scale(1.25);
-    }
-    `}
+.image-box:hover {
+    transform: scale(1.08);
+}
+
+`}
 </style>
         </div>
     );
