@@ -29,6 +29,7 @@ import image26 from './images/image26.jpeg';
 import image27 from './images/image27.jpeg';
 import image28 from './images/image28.jpeg';
 import image29 from './images/image29.jpeg';
+import image30 from './images/image30.jpeg';
 
 /* Timer for rest page: tracks how long you've been on the page for */
 function Timer() {
@@ -59,8 +60,8 @@ function Timer() {
     return (
         <div className="text-white font-bold mt-4 flex flex-col items-center">
             <div className="flex mt-4 items space-x-2">
-                <button className="bg-[#FFFFFF] hover:bg-[#99FF99] text-black font-bold px-2 py-1 rounded-lg" onClick={startTimer}>Start Break</button>
-                <button className="bg-[#FFFFFF] hover:bg-[#FF9999] text-black font-bold px-2 py-1 rounded-lg" onClick={stopTimer}>Stop Break</button>
+                <button className="bg-[#000000] hover:bg-[#12E193] text-white font-bold px-2 py-1 rounded-lg" onClick={startTimer}>Start Break</button>
+                <button className="bg-[#000000] hover:bg-[#ffcccb] text-white font-bold px-2 py-1 rounded-lg" onClick={stopTimer}>Stop Break</button>
                 <p className="text-3xl">{formatTime(time)}</p>
             </div>
         </div>
@@ -154,17 +155,17 @@ function Rest() {
                 <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center">HUNGRY?</div>
                     <p className="mt-2 text-white text-center">{foodAffirmations[foodIndex]}</p>
-                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeFoodAffirmation}>Next Affirmation</button>
+                    <button className="bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeFoodAffirmation}>Next Affirmation</button>
                 </div>
                 <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center">NEED FRESH AIR?</div>
                     <p className="mt-2 text-white text-center">{outdoorAffirmations[outdoorIndex]}</p>
-                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeOutdoorAffirmation}>Next Affirmation</button>
+                    <button className="bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeOutdoorAffirmation}>Next Affirmation</button>
                 </div>
                 <div className="flex flex-col items-center mt-8">
                     <div className="bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center">TIRED & BURNT OUT?</div>
                     <p className="mt-2 text-white text-center">{comfortAffirmations[comfortIndex]}</p>
-                    <button className="bg-[#80CDBB] hover:bg-[#D7C4A9] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeComfortAffirmation}>Next Affirmation</button>
+                    <button className="bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-6 mt-2 rounded-lg" onClick={changeComfortAffirmation}>Next Affirmation</button>
                 </div>
             </div>
 
@@ -230,6 +231,12 @@ function Rest() {
                         <a href="https://www.google.com/maps/dir//Stellini+Pasta+Bar,+High+Street,+Kensington+NSW/@-33.9156767,151.2278932,13z/data=!3m1!5s0x6b13eb099503ba87:0x20b19b8a7efcbdf4!4m8!4m7!1m0!1m5!1m1!1s0x6b12b18ca4df9835:0x57d6fe926da0067!2m2!1d151.2278932!2d-33.9156767?entry=ttu"
                                     target="_blank" rel="noopener noreferrer">
                         <div className="image-box" style={{ backgroundImage: `url(${image29})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
+                        </a>
+
+                        {/* Image Box 10 */}
+                        <a href="https://google.com.au/maps/place/Central+Plaza+Food+Court/@-33.8704136,151.1991487,15z/data=!3m1!5s0x6b12ae3fb6bdb3d9:0x64dca8533e9e899c!4m10!1m2!2m1!1sCentral+Plaza,+Kiosk+1%2F450+George+St,+Sydney+NSW+2000!3m6!1s0x6b12ae3fb00c98a5:0x5831f0d229316634!8m2!3d-33.8704136!4d151.2079034!15sCjVDZW50cmFsIFBsYXphLCBLaW9zayAxLzQ1MCBHZW9yZ2UgU3QsIFN5ZG5leSBOU1cgMjAwMFo1IjNjZW50cmFsIHBsYXphIGtpb3NrIDEgNDUwIGdlb3JnZSBzdCBzeWRuZXkgbnN3IDIwMDCSAQpmb29kX2NvdXJ0mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJQT0dKcFZubEJSUkFC4AEA!16s%2Fg%2F11c575yqph?entry=ttu"
+                                    target="_blank" rel="noopener noreferrer">
+                        <div className="image-box" style={{ backgroundImage: `url(${image30})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                         </a>
 
                         </div>
@@ -390,11 +397,10 @@ function Rest() {
 }
 
 .image-box {
-    width: 200px;
-    height: 105px;
-    border: 1.0px solid white;
+    width: 220px;
+    height: 109px;
+    border: 2.5px solid black;
     transition: transform 0.3s ease;
-    flex-shrink: 0;
     margin-right: 15px; 
 
 }
