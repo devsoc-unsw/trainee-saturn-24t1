@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import ModeButton from './components-hana/ModeToggleButton'
-import axios from 'axios';
+// import axios from 'axios';
 import {
   useNavigate,
 } from 'react-router-dom';
@@ -8,28 +8,28 @@ import {
 function Landing({ isDarkMode, handleModeChange }) {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    let fn = async () => {
-      let tasks = await test();
-      console.log(tasks);
-    };
-    fn();
-  }, []);
+  // useEffect(() => {
+  //   let fn = async () => {
+  //     let tasks = await test();
+  //     console.log(tasks);
+  //   };
+  //   fn();
+  // }, []);
 
-  const test = async () => {
-    const body = {
-      name: "",
-      checked: false,
-    }
-    try {
-      await axios.post(`http://localhost:5001/testmake`, body);
-      let tasks = await axios.get(`http://localhost:5001/testget`);
-      return tasks;
-    } catch (err) {
-      alert(err.response.data.error);
-      return ("error");
-    }
-  };
+  // const test = async () => {
+  //   const body = {
+  //     name: "",
+  //     checked: false,
+  //   }
+  //   try {
+  //     await axios.post(`http://localhost:5001/testmake`, body);
+  //     let tasks = await axios.get(`http://localhost:5001/testget`);
+  //     return tasks;
+  //   } catch (err) {
+  //     alert(err.response.data.error);
+  //     return ("error");
+  //   }
+  // };
 
 
   return (
