@@ -115,7 +115,7 @@ app.get("/notesget", async (req, res) => {
 app.post("/notespost", async (req, res) => {
     //uncomment line underneath
     const notes = new Notes({
-        content: req.body.content | ""
+        content: req.body.content
     })
 
     try {
