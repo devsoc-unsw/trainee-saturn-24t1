@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import ModeButton from './components-hana/ModeToggleButton'
 // import axios from 'axios';
 import {
@@ -35,23 +35,26 @@ function Landing({ isDarkMode, handleModeChange }) {
   return (
     <div className={
       isDarkMode === true
-        ? "p-3 flex flex-col bg-[#302E28] items-center text-center h-screen align-middle"
-        : "p-3 flex flex-col bg-[#FFFDEE] items-center text-center h-screen align-middle"}>
-      <div className="grid grid-cols-3 justify-between m-2 py-4 place-items-center h-1/5 w-full">
-        <div className="w-full text-center font-bold text-3xl">
+        ? "p-2 bg-[#302E28] items-center text-center h-screen align-middle"
+        : "p-2 bg-[#FFFDEE] items-center text-center h-screen align-middle"}>
+      <div id="header" className="grid grid-cols-3 justify-around m-2 py-4 place-items-center h-1/5">
+        <div className="text-3xl font-bold">
           <span className={
             isDarkMode === true
               ? "text-[#FBFBFB]"
-              : "text-[#302E28]"
-          }>Achieve</span>
-          <span className="text-[#2ADCB1]">Mint</span>
+              : "text=[#302E28]"}>Achieve</span><span className="text-[#2ADCB1]">Mint</span>
+          {/* <img src=""></img> */}
         </div>
-        <div>{/*empty div, aligning purposes*/}</div>
-        <div id="mode-button" className="w-1/4">
+        <div>
+          {/*empty div */}
+        </div>
+
+        <div id="mode-button">
           <div className="" >
             <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
           </div>
         </div>
+
       </div>
 
       <div className={
