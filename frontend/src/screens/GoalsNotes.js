@@ -1,22 +1,59 @@
 import React, { useState, useEffect } from 'react';
-import goalsIcon from './goals_icon.svg'
-import notesIcon from './notes_icon.svg'
+import goalsIcon from './goals_icon.svg';
+import notesIcon from './notes_icon.svg';
+import axios from 'axios';
 
 const GoalsNotes = (props) => {
   const [currTab, setCurrTab] = useState("goals");
 
   // default "Goals" content
-  const [goalsContent, setGoalsContent] = useState(
-    "I want to be rich \nFind a hobby \nGIMME AN HD \nFind a boyfriend..or a girlfriend"
-  );
+  const [goalsContent, setGoalsContent] = useState("");
 
   // default "Notes" content
-  const [notesContent, setNotesContent] = useState(
-    "I don't think it's possible anymore..\n"
-  );
+  const [notesContent, setNotesContent] = useState("");
 
   // default displayed content is "Goals" tab
   const [displayContent, setDisplayContent] = useState(goalsContent);
+
+  // const deleteGoal = async () => {
+  //   try {
+  //     await axios.delete(`http://localhost:5001/goalsdel`);
+  //     setNotesContent('');
+  //   } catch (error) {
+  //     console.error('Error deleting goal:', error);
+  //   }
+  // };
+
+  // fetch data from backend
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let goals = await axios.get('http://localhost:5001/goalsget');
+        let notes = await axios.get('http://localhost:5001/notesget');
+
+        // Check if goals is null
+        if (goals === null || goals.data === null) {
+          // If goals is null, make a POST request
+          console.log("Making request")
+          await axios.post('http://localhost:5001/goalspost', { content: "" });
+        } else {
+          setGoalsContent(goals.data.content);
+        }
+
+        // Check if notes is null
+        if (notes === null || notes.data === null) {
+          // If notes is null, make a POST request
+          await axios.post('http://localhost:5001/notespost', { content: "" });
+        } else {
+          setNotesContent(notes.data.content);
+        }
+      } catch (err) {
+        alert(err.response.data.error);
+        return ("error");
+      }
+    }
+    fetchData();
+  }, []);
 
   // changing displayed tab between "Goals" or "Notes" tab
   useEffect(() => {
@@ -86,12 +123,14 @@ const GoalsNotes = (props) => {
   }
 
   // updated content after user edited and saved
-  const contentChanged = () => {
+  const contentChanged = async () => {
     var editBox = document.getElementById("edit-box").value;
     if (currTab === "goals") {
       setGoalsContent(editBox);
+      await axios.put('http://localhost:5001/goalsput', { content: editBox })
     } else {
-      setNotesContent(editBox);;
+      setNotesContent(editBox);
+      await axios.put('http://localhost:5001/notesput', { content: editBox })
     }
   }
 
