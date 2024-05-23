@@ -116,7 +116,7 @@ const Task = ({tabs, setTabs, currentTab, task}) => {
                         : <textarea
                             id="task-name-edit"
                             placeholder={task.name}
-                            className="mx-2 px-1 bg-[#687172] text-[#D7C4A9] h-6 rounded-sm"
+                            className="mx-2 my-1 px-1 bg-[#687172] text-[#D7C4A9] h-6 rounded-sm"
                         ></textarea>}
                     </div>
                     {/* dropdown button that show details of the task */}
