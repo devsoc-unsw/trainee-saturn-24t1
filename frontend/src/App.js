@@ -1,8 +1,7 @@
 import './App.css';
 import {
   Routes,
-  Route,
-  useNavigate,
+  Route
 } from 'react-router-dom';
 import Landing from './screens/Landing';
 import Todo from './screens/Todo';
@@ -10,7 +9,6 @@ import Rest from './screens/Rest';
 import { useState } from "react"
 
 function App() {
-  const navigate = useNavigate();
   const [isDarkMode, setDarkMode] = useState(true);
 
   function handleModeChange(newMode) {

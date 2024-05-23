@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import ModeButton from './components-hana/ModeToggleButton'
 // import axios from 'axios';
 import {
@@ -18,7 +18,7 @@ function Landing({ isDarkMode, handleModeChange }) {
 
   // const test = async () => {
   //   const body = {
-  //     name: "sleep",
+  //     name: "",
   //     checked: false,
   //   }
   //   try {
@@ -27,7 +27,7 @@ function Landing({ isDarkMode, handleModeChange }) {
   //     return tasks;
   //   } catch (err) {
   //     alert(err.response.data.error);
-  //     return("error");
+  //     return ("error");
   //   }
   // };
 
