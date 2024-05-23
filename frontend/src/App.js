@@ -7,22 +7,22 @@ import {
 import Landing from './screens/Landing';
 import Todo from './screens/Todo';
 import Rest from './screens/Rest';
+import { useState } from "react"
 
 function App() {
   const navigate = useNavigate();
-  // hello
+  const [isDarkMode, setDarkMode] = useState(true);
+
+  function handleModeChange(newMode) {
+    setDarkMode(newMode);
+  }
 
   return (
     <div>
-      <div className='flex justify-evenly'>
-        <button onClick={() => navigate('/todo')}>To do</button>
-        <button onClick={() => navigate('/')}>Landing</button>
-        <button onClick={() => navigate('/rest')}>Rest</button>
-      </div>
       <Routes>
-        <Route path='/' element={<Landing />} />
-        <Route path='/todo' element={<Todo />} />
-        <Route path='/rest' element={<Rest />} />
+        <Route path='/' element={<Landing isDarkMode={isDarkMode} handleModeChange={handleModeChange} />} />
+        <Route path='/todo' element={<Todo isDarkMode={isDarkMode} handleModeChange={handleModeChange} />} />
+        <Route path='/rest' element={<Rest isDarkMode={isDarkMode} handleModeChange={handleModeChange} />} />
       </Routes>
     </div>
   );
