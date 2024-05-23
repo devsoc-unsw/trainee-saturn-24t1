@@ -23,15 +23,14 @@ function Todo({ isDarkMode, handleModeChange }) {
         ? "h-screen p-2 bg-[#302E28]"
         : "h-screen p-2 bg-[#FFFDEE]"
     } >
-      <div id="header" className="grid grid-cols-3 justify-around m-2 py-4
-        place-items-center h-1/5">
-        <h1 className="text-3xl font-bold">
+      <div id="header" className="grid grid-cols-3 justify-around m-2 py-4 place-items-center h-1/5">
+        <div className="text-3xl font-bold">
           <span className={
             isDarkMode === true
               ? "text-[#FBFBFB]"
               : "text=[#302E28]"}>Achieve</span><span className="text-[#2ADCB1]">Mint</span>
           {/* <img src=""></img> */}
-        </h1>
+        </div>
 
         <div id="quotes" className="">
           {/* quotes pop up when you finish a task will later implement
@@ -39,7 +38,7 @@ function Todo({ isDarkMode, handleModeChange }) {
           <PopUpQuotes isDarkMode={isDarkMode} />
         </div>
 
-        <div id="mode-button" className="w-1/4">
+        <div id="mode-button">
           <div className="" >
             <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
           </div>
