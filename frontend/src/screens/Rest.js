@@ -198,7 +198,7 @@ function Rest({ isDarkMode, handleModeChange }) {
                     <div className={
                         isDarkMode === true
                         ?"bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center"
-                        :"bg-[#E6D4B9] text-black font-bold rounded-full px-4 py-2 text-center"
+                        :"bg-[#F1E5CF] text-black font-bold rounded-full px-4 py-2 text-center"
                     }
                     >HUNGRY?</div>
                     <p className={
@@ -219,7 +219,7 @@ function Rest({ isDarkMode, handleModeChange }) {
                     <div className={
                         isDarkMode === true
                         ?"bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center"
-                        :"bg-[#E6D4B9] text-black font-bold rounded-full px-4 py-2 text-center"
+                        :"bg-[#F1E5CF] text-black font-bold rounded-full px-4 py-2 text-center"
                     }
                     >NEED FRESH AIR?</div>
                 <p className={
@@ -516,7 +516,7 @@ function Rest({ isDarkMode, handleModeChange }) {
 .image-box-dark {
     width: 220px;
     height: 109px;
-    border: 3.5px solid #666666;
+    border: 3.5px solid #E6D4B9;
     transition: transform 0.3s ease;
     margin-right: 15px; 
 
