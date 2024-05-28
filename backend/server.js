@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const Task = require('./models/task');
 const Goals = require('./models/goals');
 const Notes = require('./models/notes');
+const Tabs = require('./models/tab');
 let cors = require("cors");
 
 // Create our app
@@ -39,6 +40,49 @@ app.post("/testmake", async (req, res) => {
     try {
         const newTask = await task.save();
         res.status(201).json(newTask);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Tab
+app.get("/tabsget", async (req, res) => {
+    try {
+        let tabs = await Tabs.find();
+        res.status(200);
+        res.json(tabs);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+app.post("/tabspost", async (req, res) => {
+    const tab = new Tabs({
+        id: req.body.id,
+        content: req.body.content,
+        tasks: req.body.tasks
+    })
+
+    try {
+        const newGoals = await tab.save();
+        res.status(201).json(newGoals);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+app.put('/tabsput', async (req, res) => {
+    try {
+        const updatedTabs = await Tabs.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            { new: true }
+        );
+
+        if (!updatedTabs) {
+            return res.status(404).json({ message: 'Tabs not found' });
+        }
+        res.status(200).json(updatedTabs);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }

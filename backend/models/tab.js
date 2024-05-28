@@ -1,16 +1,12 @@
 const mongoose = require('mongoose');
 
 const tabSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         default: "New Tab"
     },
     tasks: {
-        type: [taskSchema]
+        type: Array
     }
 })
 

@@ -1,10 +1,6 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-    id: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         default: "New Task"
