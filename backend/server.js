@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const Task = require('./models/task');
 const Goals = require('./models/goals');
 const Notes = require('./models/notes');
-const Favorite = require("./models/favorite");
 let cors = require("cors");
 
 // Create our app
@@ -141,41 +140,6 @@ app.put('/notesput', async (req, res) => {
         res.status(200).json(updatedNotes);
     } catch (err) {
         res.status(400).json({ message: err.message });
-    }
-});
-
-
-
-// Favorites Endpoints
-app.get("/favorites", async (req, res) => {
-    try {
-        const favorites = await Favorite.find();
-        res.status(200).json(favorites);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-app.post("/favorites", async (req, res) => {
-    const favorite = new Favorite({
-        userId: req.body.userId,
-        itemId: req.body.itemId,
-    });
-
-    try {
-        const newFavorite = await favorite.save();
-        res.status(201).json(newFavorite);
-    } catch (err) {
-        res.status(400).json({ message: err.message });
-    }
-});
-
-app.delete("/favorites/:id", async (req, res) => {
-    try {
-        await Favorite.findByIdAndDelete(req.params.id);
-        res.status(200).json({ message: "Favorite deleted successfully" });
-    } catch (err) {
-        res.status(500).json({ message: err.message });
     }
 });
 
