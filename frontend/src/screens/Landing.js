@@ -36,8 +36,8 @@ function Landing({ isDarkMode, handleModeChange }) {
   return (
     <div className={
       isDarkMode === true
-        ? "p-2 bg-[#302E28] items-center text-center h-screen align-middle"
-        : "p-2 bg-[#FFFDEE] items-center text-center h-screen align-middle"}>
+        ? "p-2 bg-[#302E28] items-center text-center h-window align-middle"
+        : "p-2 bg-[#FFFDEE] items-center text-center h-window align-middle"}>
       <div id="header" className="grid grid-cols-3 justify-around m-2 py-4 place-items-center h-1/5">
         <div className="text-3xl font-bold">
           <span className={
