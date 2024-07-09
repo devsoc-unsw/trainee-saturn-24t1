@@ -20,8 +20,8 @@ function Todo({ isDarkMode, handleModeChange }) {
   return (
     <div className={
       isDarkMode === true
-        ? "h-window p-2 bg-[#302E28]"
-        : "h-window p-2 bg-[#FFFDEE]"
+        ? "h-screen p-2 bg-[#302E28]"
+        : "h-screen p-2 bg-[#FFFDEE]"
     } >
       <div id="header" className="grid grid-cols-3 justify-around m-2 py-4 place-items-center h-1/5">
         <div className="text-3xl font-bold">

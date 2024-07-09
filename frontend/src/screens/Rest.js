@@ -161,13 +161,13 @@ function Rest({ isDarkMode, handleModeChange }) {
 
         <div className={
             isDarkMode === true
-                ? "h-window p-2 bg-[#302E28]"
-                : "h-window p-2 bg-[#FFFDEE]"
+                ? "h-screen p-2 bg-[#302E28]"
+                : "h-screen p-2 bg-[#FFFDEE]"
         } >
             <div className={
                 isDarkMode === true
-                    ? "relative flex h-window p-2 bg-[#302E28]"
-                    : "relative flex h-window p-2 bg-[#FFFDEE]"
+                    ? "relative flex h-screen p-2 bg-[#302E28]"
+                    : "relative flex h-screen p-2 bg-[#FFFDEE]"
             }>
                 <div className="w-1/4 p-4 flex flex-col justify-between">
                     <div className="flex flex-col items-center">
