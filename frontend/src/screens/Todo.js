@@ -23,7 +23,7 @@ function Todo({ isDarkMode, handleModeChange }) {
         ? "h-screen p-2 bg-[#302E28]"
         : "h-screen p-2 bg-[#FFFDEE]"
     } >
-      <div id="header" className="grid grid-cols-3 justify-around m-2 py-4 place-items-center h-1/5">
+      <div id="header" className="grid grid-cols-3 m-2 py-4 place-items-center h-1/5">
         <div className="text-3xl font-bold">
           <span className={
             isDarkMode === true
@@ -47,8 +47,26 @@ function Todo({ isDarkMode, handleModeChange }) {
       </div>
 
       <div id="body" className="flex justify-center">
-        <div id="to-do-list" className="min-w-96 mx-2 my-4 basis-1/3">
-          <ListOfTabs onData={handleData} isDarkMode={isDarkMode} />
+        <div className="min-w-96 basis-1/3">
+          {/*button to go back to landing page,
+          position is a bit weird, but will probably fix that later when we have
+          ideas where to put it*/}
+          <div className='w-full mx-2'>
+            <button
+              onClick={() => navigate('/')}
+              className={
+                isDarkMode === true
+                  ? "bg-[#D4DCFF] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
+                  : "bg-[#BEE6CC] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
+              }>
+              <span>&#8592;</span>
+              <span>Back to Landing Page</span>
+            </button>
+          </div>
+
+          <div id="to-do-list" className="min-w-96 mx-2 my-4 basis-1/3">
+            <ListOfTabs onData={handleData} isDarkMode={isDarkMode} />
+          </div>
         </div>
 
         <div id="features" className="mx-4 basis-1/3">
@@ -65,22 +83,6 @@ function Todo({ isDarkMode, handleModeChange }) {
           <div id="goals-notes" className="m-2 w-full">
             <GoalsNotes isDarkMode={isDarkMode} />
           </div>
-          {/*button to go back to landing page,
-            position is a bit weird, but will probably fix that later when we have
-            ideas where to put it*/}
-          <div className='w-full'>
-            <button
-              onClick={() => navigate('/')}
-              className={
-                isDarkMode === true
-                  ? "bg-[#FBFBFB] font-bold text-[#302E28] rounded-xl p-3 m-auto flex items-center space-x-2"
-                  : "bg-[#302E28] font-bold text-[#FFFFFF] rounded-xl p-3 m-auto flex items-center space-x-2"
-              }>
-              <span>&#8592;</span>
-              <span>Back to Landing Page</span>
-            </button>
-          </div>
-
         </div>
       </div>
 

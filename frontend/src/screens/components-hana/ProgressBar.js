@@ -40,8 +40,8 @@ const ProgressBar = ({ tabs, currentTab, isDarkMode }) => {
     <>
       <p className={
         isDarkMode === true
-          ? 'text-[#FBFBFB] font-bold my-2'
-          : 'text-[#3C3C3C] font-bold my-2'
+          ? 'text-[#FBFBFB] font-semibold my-2'
+          : 'text-[#3C3C3C] font-semibold my-2'
       }>DUE TASKS COMPLETED:</p>
       <ThemeProvider theme={theme}>
         <div className='flex items-center'>
