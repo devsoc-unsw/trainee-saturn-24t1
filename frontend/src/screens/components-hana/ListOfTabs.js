@@ -263,7 +263,7 @@ const ListOfTabs = (props) => {
         >+</button>
       </div >
 
-      <div id="tasks-info" className="p-4 bg-[#80CDBB] rounded-b-lg">
+      <div id="tasks-info" className="px-4 py-6 bg-[#80CDBB] rounded-b-md rounded-tr-md">
         {showTaskList(currentTab) === undefined
           ? <div>No tabs selected</div>
           : <div className="flex justify-between p-2 pb-3">

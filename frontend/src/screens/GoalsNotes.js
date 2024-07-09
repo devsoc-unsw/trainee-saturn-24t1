@@ -162,12 +162,12 @@ const GoalsNotes = (props) => {
       <div id="goals-notes-content"
         className={
           props.isDarkMode === true
-            ? "bg-[#D4DCFF] py-2 px-6 rounded-b-xl rounded-tr-xl w-full"
-            : "bg-[#BEE6CC] py-2 px-6 rounded-b-xl rounded-tr-xl w-full"
+            ? "bg-[#D4DCFF] py-6 px-7 rounded-b-md rounded-tr-md w-full"
+            : "bg-[#BEE6CC] py-6 px-7 rounded-b-md rounded-tr-md w-full"
         }>
         <div className="flex items-center">
           {/* default tab is "Goals", this will change if the user switches tab */}
-          <h1 id="goals-notes-title" className='basis-[75%] font-bold text-4xl text-[#3C3C3C]'>
+          <h1 id="goals-notes-title" className='basis-[75%] font-bold text-3xl text-[#3C3C3C]'>
             Goals
           </h1>
           <button id="editButton"
@@ -182,7 +182,7 @@ const GoalsNotes = (props) => {
         </div>
         <div id="goals" className='content'>
           {/* change between "goals-content" and "notes-content" */}
-          <div id="goals-content" className="whitespace-pre place-content-between align-top py-1 
+          <div id="goals-content" className="whitespace-pre place-content-between align-top pt-4
                     justify-between">
             {goalsContent}
           </div>
@@ -190,7 +190,7 @@ const GoalsNotes = (props) => {
 
         <div id="notes" className='hidden content'>
           {/* change between "goals-content" and "notes-content" */}
-          <div id="goals-content" className="whitespace-pre place-content-between align-top py-1">
+          <div id="goals-content" className="whitespace-pre place-content-between align-top pt-4">
             {notesContent}
           </div>
         </div>

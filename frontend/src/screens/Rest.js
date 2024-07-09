@@ -61,6 +61,12 @@ function Timer({ isDarkMode }) {
     return (
         <div className="text-white font-bold mt-4 flex flex-col items-center">
             <div className="flex mt-4 items space-x-2">
+                <p className={isDarkMode 
+                      ? "text-2xl mx-1 text-white" 
+                      : "text-2xl mx-1 text-black"
+                      }>
+                  {formatTime(time)}
+                </p>
                 <button className = {
                         isDarkMode === true 
                         ? "bg-[#ffffff] hover:bg-[#90EE90] text-black font-bold px-2 py-1 rounded-lg" 
@@ -74,12 +80,6 @@ function Timer({ isDarkMode }) {
                         : "bg-[#000000] hover:bg-[#ffcccb] text-white font-bold px-2 py-1 rounded-lg" 
                 }
                         onClick={stopTimer}>Stop Break</button>
-                <p className={isDarkMode 
-                    ? "text-2xl text-white" 
-                    : "text-2xl text-black"
-                    }>
-                        {formatTime(time)}
-                    </p>
             </div>
         </div>
     );
@@ -153,47 +153,55 @@ function Rest({ isDarkMode, handleModeChange }) {
         setComfortIndex((comfortIndex + 1) % comfortAffirmations.length);
     };
 
-    const handleButtonClick = () => {
-        navigate('/');
-    };
-
     return (
-        
-        <div className={
-      isDarkMode === true
-        ? "h-screen p-2 bg-[#302E28]"
-        : "h-screen p-2 bg-[#FFFDEE]"
-    } >
-    <div className={
-            isDarkMode === true
-                ? "relative flex h-screen p-2 bg-[#302E28]"
-                : "relative flex h-screen p-2 bg-[#FFFDEE]"
-        }>            
-        <div className="w-1/4 p-4 flex flex-col justify-between">
-                <div className="flex flex-col items-center">
-                    <h className="text-3xl font-bold">
-                    <span className={
-                isDarkMode === true
+      <div className={
+        isDarkMode === true
+          ? "h-screen p-2 bg-[#302E28]"
+          : "h-screen p-2 bg-[#FFFDEE]"}>
+
+        <div id="header" className="grid grid-cols-3 m-2 py-4 place-items-center h-1/5">
+          
+          <div className="text-3xl font-bold">
+            <span className={
+              isDarkMode === true
                 ? "text-[#FBFBFB]"
-                : "text=[#302E28]"}>Achieve</span><span className="text-[#2ADCB1]">Mint</span>                   
-                    </h>
+                : "text=[#302E28]"}>Achieve</span><span className="text-[#2ADCB1]">Mint</span>
+          </div>
 
-                    {/* Buttons for rest page */}
-                    <button className={
-                        isDarkMode === true
-                            ? "bg-[#FBFBFB] hover:bg-[#CCCCCC] font-bold text-[#302E28] rounded-xl p-3 m-1.5 flex items-center space-x-2"
-                            : "bg-[#302E28] hover:bg-[#CCCCCC] font-bold text-[#FBFBFB] rounded-xl p-3 m-1.5 flex items-center space-x-2"
-                    }
-                        onClick={handleButtonClick}><span>&#8592;</span> <span>Back to Landing Page</span></button>                   
-                    <Timer isDarkMode={isDarkMode} />
-                </div>
+          <div></div>
 
-                <div id="mode-button">
-                    <div class="">
-                    <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
-                    </div>
-                </div>
+          <div id="mode-button">
+            <div className="" >
+              <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
+            </div>
+          </div>
 
+        </div>
+
+        <div id="body" className='flex justify-center'>
+
+          <div id="timer-affirmations" className="flex my-1">
+
+            <div>
+              {/* Buttons for rest page */}
+              <div className="flex flex-col items-center">
+                <button
+                  onClick={() => navigate('/')}
+                  className={
+                    isDarkMode === true
+                      ? "bg-[#D4DCFF] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
+                      : "bg-[#BEE6CC] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
+                  }>
+                  <span>&#8592;</span>
+                  <span>Back to Landing Page</span>
+                </button>
+              </div>
+
+              <div id="timer">
+                <Timer isDarkMode={isDarkMode} />
+              </div>
+
+              <div id="affirmations">
                 <div className="flex flex-col items-center mt-8">
                     <div className={
                         isDarkMode === true
@@ -203,78 +211,85 @@ function Rest({ isDarkMode, handleModeChange }) {
                     >HUNGRY?</div>
                     <p className={
                         isDarkMode === true
-                            ? "mt-2 text-[#FBFBFB] text-center"
-                            : "mt-2 text-[#302E28] text-center"
+                            ? "mt-2 text-[#FBFBFB] text-center w-80"
+                            : "mt-2 text-[#302E28] text-center w-80"
                     }>{foodAffirmations[foodIndex]}</p>
-                 <button className={
+                  <button className={
                         isDarkMode === true 
-                        ? "bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-6 mt-2 rounded-lg" 
-                        : "bg-[#80CDBB] hover:bg-[#D2B48C] text-white font-bold px-6 mt-2 rounded-lg" 
-                 }
-                        onClick={changeFoodAffirmation}>Next Affirmation</button>
+                        ? "bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-4 mt-2 rounded-lg" 
+                        : "bg-[#80CDBB] hover:bg-[#D2B48C] text-white font-bold px-4 mt-2 rounded-lg" 
+                  }
+                      onClick={changeFoodAffirmation}>Next Affirmation</button>
                 </div>
 
 
                 <div className="flex flex-col items-center mt-8">
-                    <div className={
-                        isDarkMode === true
-                        ?"bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center"
-                        :"bg-[#F1E5CF] text-black font-bold rounded-full px-4 py-2 text-center"
-                    }
-                    >NEED FRESH AIR?</div>
+                  <div className={
+                      isDarkMode === true
+                      ?"bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center"
+                      :"bg-[#F1E5CF] text-black font-bold rounded-full px-4 py-2 text-center"
+                  }
+                  >NEED FRESH AIR?</div>
                 <p className={
-                        isDarkMode === true
-                            ? "mt-2 text-[#FBFBFB] text-center"
-                            : "mt-2 text-[#302E28] text-center"
-                    }>{outdoorAffirmations[outdoorIndex]}</p>                    
+                      isDarkMode === true
+                          ? "mt-2 text-[#FBFBFB] text-center w-80"
+                          : "mt-2 text-[#302E28] text-center w-80"
+                  }>{outdoorAffirmations[outdoorIndex]}</p>                    
                 <button className={
-                        isDarkMode === true 
-                        ? "bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-6 mt-2 rounded-lg" 
-                        : "bg-[#80CDBB] hover:bg-[#D2B48C] text-white font-bold px-6 mt-2 rounded-lg" 
-                 }                    
-                 onClick={changeOutdoorAffirmation}>Next Affirmation</button>
+                      isDarkMode === true 
+                      ? "bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-4 mt-2 rounded-lg" 
+                      : "bg-[#80CDBB] hover:bg-[#D2B48C] text-white font-bold px-4 mt-2 rounded-lg" 
+                  }
+                  onClick={changeOutdoorAffirmation}>Next Affirmation</button>
                 </div>
 
 
                 <div className="flex flex-col items-center mt-8">
-                    <div className={
-                        isDarkMode === true
-                        ?"bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center"
-                        :"bg-[#E6D4B9] text-black font-bold rounded-full px-4 py-2 text-center"
-                    }
-                        >TIRED & BURNT OUT?</div>
+                  <div className={
+                      isDarkMode === true
+                      ?"bg-[#D7C4A9] text-black font-bold rounded-full px-4 py-2 text-center"
+                      :"bg-[#E6D4B9] text-black font-bold rounded-full px-4 py-2 text-center"
+                  }
+                      >TIRED & BURNT OUT?</div>
                 <p className={
-                        isDarkMode === true
-                            ? "mt-2 text-[#FBFBFB] text-center"
-                            : "mt-2 text-[#302E28] text-center"
-                    }>{comfortAffirmations[comfortIndex]}</p>                    
+                      isDarkMode === true
+                          ? "mt-2 text-[#FBFBFB] text-center w-80"
+                          : "mt-2 text-[#302E28] text-center w-80"
+                  }>{comfortAffirmations[comfortIndex]}</p>                    
                 <button className={
                         isDarkMode === true 
-                        ? "bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-6 mt-2 rounded-lg" 
-                        : "bg-[#80CDBB] hover:bg-[#D2B48C] text-white font-bold px-6 mt-2 rounded-lg" 
-                 }  
-                 onClick={changeComfortAffirmation}>Next Affirmation</button>
+                        ? "bg-[#80CDBB] hover:bg-[#F5F5DC] text-black font-bold px-4 mt-2 rounded-lg" 
+                        : "bg-[#80CDBB] hover:bg-[#D2B48C] text-white font-bold px-4 mt-2 rounded-lg" 
+                  }  
+                  onClick={changeComfortAffirmation}>Next Affirmation</button>
                 </div>
+              </div>
             </div>
 
-            {/* Categories for rest page */}
-            <div className="w-3/4">
-    <div className="flex flex-col items-center">
-        {/* added a margin left so theres space for the dark/light mode button */}
-        <div className="mt-8 w-3/4 flex flex-col items-center px-4 py-2 rounded bg-gradient-to-r from-green-200 to-blue-200" style={{ marginLeft: '-150px' }}>
-            <h className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#FFFFFF]">TAKE A BREAK & DE-STRESS</h>        
-            <p style={{ color: "#302E28" }}>It's important to step back, take a deep breath, and relax. Here are some activities to help you unwind!</p>               </div>
-                    <div className="mt-8 w-full flex flex-col items-center">
+          </div>
+          
+          <div id="suggestions">
+
+            <div id="page-info" className="my-1 mx-2 p-5 flex flex-col items-center rounded bg-gradient-to-r from-green-200 to-blue-200">
+              <h className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#FFFFFF]">
+                TAKE A BREAK & DE-STRESS</h>
+              <p className="text-[#302E28]">
+                It's important to step back, take a deep breath, and relax. Here are some activities to help you unwind!</p>
+            </div>
+
+            <div id="all-suggestions">
+
+              <div className="mt-8 w-full flex flex-col items-center">
                     <h className={
                             isDarkMode === true
-                                ? "text-xl font-bold mt-8 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
-                                : "text-xl font-bold mt-8 self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
+                                ? "text-xl font-bold self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
+                                : "text-xl font-bold self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
                         }> 
                         FOOD SUGGESTIONS
                     </h>
 
                     <div className={isDarkMode === true ? "image-container" : "image-container-dark"}>
-                        <div className={isDarkMode === true ? "image-row"  : "image-row-dark"}>
+                        <div className='flex w-96'>
                         {/* Image Box 2 */}
                         <a href="https://www.google.com/maps/dir//XS+Espresso+-+UNSW,+G05+%26+G05a+Ground+Floor+Biological+Science+(D26,+Kensington+NSW+2033/@-33.9177478,151.2256471,16z/data=!3m1!5s0x6b12b2203f513809:0x27d38b2bf97cf7bc!4m8!4m7!1m0!1m5!1m1!1s0x6b12b3edb60a6861:0x768b3e60eb849cb!2m2!1d151.2354138!2d-33.9173397?entry=ttu"
                                     target= "_blank" rel="noopener noreferrer">
@@ -331,20 +346,19 @@ function Rest({ isDarkMode, handleModeChange }) {
 
                         </div>
                     </div>
-                </div>
+              </div>
 
-                    <div className="mt-8 w-full flex flex-col items-center">
+              <div className="mt-8 w-full flex flex-col items-center">
                     <h className={
                             isDarkMode === true
-                                ? "text-xl font-bold mt-8 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
-                                : "text-xl font-bold mt-8 self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
+                                ? "text-xl font-bold self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
+                                : "text-xl font-bold self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
                         }> OUTDOOR ACTIVITIES
                     </h>
                     
                     <div className="image-container">
-                        <div className="image-row">  
+                        <div className='flex w-96'>  
                           
-                        
                         {/* Image Box 1 */}
                         <a href="https://www.google.com/maps/dir//UNSW+Village+Green,+Kensington+NSW/@-33.9184307,151.2279767,13z/data=!3m2!4b1!5s0x6b13eb099503ba87:0x20b19b8a7efcbdf4!4m8!4m7!1m0!1m5!1m1!1s0x6b12b18bf5b99811:0xb6c110f837836911!2m2!1d151.2279767!2d-33.9184307?entry=ttu"
                                     target="_blank" rel="noopener noreferrer">
@@ -418,9 +432,9 @@ function Rest({ isDarkMode, handleModeChange }) {
                        </a>     
                         </div>
                     </div>
-                 </div>
+              </div>
 
-                    <div className="mt-8 w-full flex flex-col items-center">
+              <div className="mt-8 w-full flex flex-col items-center">
                     <h className={
                             isDarkMode === true
                                 ? "text-xl font-bold mt-8 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
@@ -429,7 +443,7 @@ function Rest({ isDarkMode, handleModeChange }) {
                     </h>
 
                     <div className="image-container">
-                        <div className="image-row">
+                        <div className='flex w-96'>
                         
                          {/* Image Box 1 */}
                         <a href="https://www.google.com/maps/dir//UNSW+Library,+Library+(F21),+Library+Rd,+UNSW,+Kensington+NSW+2052/@-33.9174196,151.1922514,13z/data=!3m1!5s0x6b12b1fdbf1d95a1:0x44edbaa3df44941e!4m8!4m7!1m0!1m5!1m1!1s0x6b12b18a9e342aef:0x46cd14a8c6426778!2m2!1d151.233451!2d-33.9174977?entry=ttu"
@@ -474,35 +488,27 @@ function Rest({ isDarkMode, handleModeChange }) {
                             </a>     
                         </div>
                     </div>
-                    </div>
-                </div>
-            </div>
+              </div>
             </div>
 
-     {/* styles for image boxes  */}
-    <style>
+          </div>
+
+        </div>
+
+        <style>
     {`
    
    .image-container {
     width: 90%; 
     overflow-x: auto;
     white-space: nowrap;
-    height: 110px; 
-    margin-bottom: 18px; 
+    height: 135px;
 }
     .image-container-dark {
     width: 90%; 
     overflow-x: auto;
     white-space: nowrap;
-    height: 110px; 
-    margin-bottom: 18px; 
-}
-
-.image-row {
-    display: flex; 
-}
-.image-row-dark {
-    display: flex; 
+    height: 135px;
 }
 
 .image-box {
@@ -530,7 +536,6 @@ function Rest({ isDarkMode, handleModeChange }) {
 }
 
 #mode-button {
-    position: fixed;
     top: 60px; 
     right: 90px; 
     z-index: 999; 
@@ -538,7 +543,8 @@ function Rest({ isDarkMode, handleModeChange }) {
 
 `}
 </style>
-        </div>
+
+      </div>
     );
 }
 
