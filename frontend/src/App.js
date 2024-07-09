@@ -6,14 +6,21 @@ import {
 import Landing from './screens/Landing';
 import Todo from './screens/Todo';
 import Rest from './screens/Rest';
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
-  const [isDarkMode, setDarkMode] = useState(true);
+  const [isDarkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('isDarkMode');
+    return savedMode !== null ? JSON.parse(savedMode) : true;
+  });
 
   function handleModeChange(newMode) {
     setDarkMode(newMode);
   }
+
+  useEffect(() => {
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+  }, [isDarkMode]);
 
   return (
     <div>

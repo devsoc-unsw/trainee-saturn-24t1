@@ -14,7 +14,7 @@ const ListOfTabs = (props) => {
   const [tabs, setTabs] = useState([
     {
       id: uuidv4(),
-      name: "Testing",
+      name: "New Tab",
       tasks: [
         {
           id: uuidv4(),
