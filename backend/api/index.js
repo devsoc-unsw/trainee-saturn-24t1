@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Task = require('./models/task');
-const Goals = require('./models/goals');
-const Notes = require('./models/notes');
+const Task = require('../models/task');
+const Goals = require('../models/goals');
+const Notes = require('../models/notes');
 let cors = require("cors");
 
 // Create our app
