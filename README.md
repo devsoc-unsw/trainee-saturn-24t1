@@ -1,5 +1,10 @@
-# AchieveMint
-A web app to track & achieve your goals !
+<div align="center">
+  <h1>AchieveMint</h1>
+  <p>A web app to track & achieve your goals !</p>
+  <img src="https://github.com/user-attachments/assets/01ec7818-74e7-47a3-b5be-4f8c8c575ebc" width="500" align="center">
+</div>
+
+
 
 ## Problem❗ 
 We know people struggle with meeting deadlines and have a lot of different things to write in one app.
@@ -27,3 +32,9 @@ We have:
 - And most importantly, a light and dark mode button!
 
   <img src="https://github.com/user-attachments/assets/22c47229-900d-4d24-b420-1825f99c8545" width="500" align="center">
+
+## Working in Progress (WIP) 👩‍💻
+- Task backend
+- Screen overflow
+- Deployment
+- Responsiveness
