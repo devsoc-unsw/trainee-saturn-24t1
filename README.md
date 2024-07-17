@@ -25,7 +25,7 @@ We have:
   
   <img src="https://github.com/user-attachments/assets/a2bc32ab-85a6-4674-9778-0eba963e7bcd" width="500" align="center">
 
-- A page with recommendations when you decide to take a break'
+- A page with recommendations when you decide to take a break
 
   <img src="https://github.com/user-attachments/assets/3b65c8ce-ff02-4d61-86f7-d32808a81ed4" width="500" align="center">
   
