@@ -1,3 +1,19 @@
+body,
+html {
+  width: 100%;
+  margin: 0;
+  background-color: #302E28;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -32,6 +48,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

@@ -23,7 +23,11 @@ function App() {
   }, [isDarkMode]);
 
   return (
-    <div>
+    <div className={
+      isDarkMode
+        ? 'h-full bg-[#302E28]'
+        : 'h-full bg-[#FFFDEE]'
+    }>
       <Routes>
         <Route path='/' element={<Landing isDarkMode={isDarkMode} handleModeChange={handleModeChange} />} />
         <Route path='/todo' element={<Todo isDarkMode={isDarkMode} handleModeChange={handleModeChange} />} />
