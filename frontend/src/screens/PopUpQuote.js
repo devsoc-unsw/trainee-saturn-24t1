@@ -29,8 +29,8 @@ const PopUpQuotes = ({ isDarkMode }) => {
     <div id="quote-box"
       className={
         isDarkMode === true
-          ? "hidden flex object-right mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg"
-          : "hidden flex object-right mx-4 py-2 px-5 bg-[#BEE6CC] rounded-lg"}>
+          ? "hidden flex object-right mx-4 py-2 px-5 bg-[#80CDBB] rounded-lg max-h-[200px]"
+          : "hidden flex object-right mx-4 py-2 px-5 bg-[#BEE6CC] rounded-lg max-h-[200px]"}>
       <p className="text-[#3C3C3C]"> {quote.content} </p>
       <button id="closeButton" className="font-bold mx-2"
         onClick={closeClicked}>x</button>

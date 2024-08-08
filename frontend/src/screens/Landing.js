@@ -8,37 +8,13 @@ import {
 function Landing({ isDarkMode, handleModeChange }) {
   const navigate = useNavigate();
 
-
-  // useEffect(() => {
-  //   let fn = async () => {
-  //     let tasks = await test();
-  //     console.log(tasks);
-  //   };
-  //   fn();
-  // }, []);
-
-  // const test = async () => {
-  //   const body = {
-  //     name: "",
-  //     checked: false,
-  //   }
-  //   try {
-  //     await axios.post(`http://localhost:5001/testmake`, body);
-  //     let tasks = await axios.get(`http://localhost:5001/testget`);
-  //     return tasks;
-  //   } catch (err) {
-  //     alert(err.response.data.error);
-  //     return ("error");
-  //   }
-  // };
-
-
   return (
     <div className={
       isDarkMode === true
-        ? "p-2 bg-[#302E28] items-center text-center h-screen align-middle"
-        : "p-2 bg-[#FFFDEE] items-center text-center h-screen align-middle"}>
-      <div id="header" className="grid grid-cols-3 justify-around m-2 py-4 place-items-center h-1/5">
+        ? "p-2 bg-[#302E28] items-center text-center h-screen w-full align-middle "
+        : "p-2 bg-[#FFFDEE] items-center text-center h-screen w-full align-middle"}>
+      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 py-4 place-items-center 
+        justify-around mb-10 min-h-[150px]">
         <div className="text-3xl font-bold">
           <span className={
             isDarkMode === true
@@ -46,7 +22,7 @@ function Landing({ isDarkMode, handleModeChange }) {
               : "text=[#302E28]"}>Achieve</span><span className="text-[#2ADCB1]">Mint</span>
           {/* <img src=""></img> */}
         </div>
-        <div>
+        <div className='hidden sm:block'>
           {/*empty div */}
         </div>
 
@@ -60,10 +36,10 @@ function Landing({ isDarkMode, handleModeChange }) {
 
       <div className={
         isDarkMode === true
-          ? "m-auto p-3 bg-[#80CDBB] h-3/5 w-3/5 text-center rounded-xl justify-center items-center align-middle"
-          : "m-auto p-3 bg-[#BEE6CC] h-3/5 w-3/5 text-center rounded-xl justify-center items-center align-middle"
+          ? "m-auto p-3 bg-[#80CDBB] w-3/5 text-center rounded-xl justify-center items-center align-middle"
+          : "m-auto p-3 bg-[#BEE6CC] w-3/5 text-center rounded-xl justify-center items-center align-middle"
       }>
-        <div className="w-4/5 m-auto">
+        <div className="w-4/5 m-auto ">
           {/* welcome message */}
           <p className={
             isDarkMode === true
@@ -78,10 +54,9 @@ function Landing({ isDarkMode, handleModeChange }) {
         {/* buttons to navigate to To-do Page or Rest Page */}
         <div className="grid justify-items-center">
           <button className="font-bold text-[#3C3C3C] bg-white rounded-xl p-3 m-1.5" onClick={() => navigate('Todo')}>Click here to see your tasks!</button>
-          <button className="font-bold text-[#3C3C3C] bg-white rounded-xl p-3 m-1.5" onClick={() => navigate('Rest')}>Click here to rest!</button>
+          <button className="font-bold text-[#3C3C3C] bg-white rounded-xl mb-10 p-3 m-1.5" onClick={() => navigate('Rest')}>Click here to rest!</button>
         </div>
       </div>
-
     </div >
   );
 }
