@@ -35,6 +35,4 @@ We have:
 
 ## Working in Progress (WIP) 👩‍💻
 - Task backend
-- Screen overflow
 - Backend deployment
-- Responsiveness
