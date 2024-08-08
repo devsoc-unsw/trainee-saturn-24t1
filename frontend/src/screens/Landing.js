@@ -14,7 +14,7 @@ function Landing({ isDarkMode, handleModeChange }) {
         ? "p-2 bg-[#302E28] items-center text-center h-screen w-full align-middle "
         : "p-2 bg-[#FFFDEE] items-center text-center h-screen w-full align-middle"}>
       <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 py-4 place-items-center 
-        justify-around mb-10 min-h-[150px]">
+        justify-around mb-10 sm:mb-0 sm:min-h-[150px]">
         <div className="text-3xl font-bold">
           <span className={
             isDarkMode === true

@@ -24,7 +24,7 @@ function Todo({ isDarkMode, handleModeChange }) {
         : "flex flex-col place-items-center w-full p-2 bg-[#FFFDEE]"
     } >
       <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 py-4 place-items-center 
-        justify-around mb-10 min-h-[150px]">
+        justify-around sm:min-h-[150px]">
         <div className="text-3xl font-bold">
           <span className={
             isDarkMode === true
@@ -33,9 +33,7 @@ function Todo({ isDarkMode, handleModeChange }) {
           {/* <img src=""></img> */}
         </div>
 
-        <div id="quotes" className="max-h-[150px] sm:col-auto sm:order-none order-last col-span-2 sm:p-0 p-5">
-          {/* quotes pop up when you finish a task will later implement
-              prop so that quote shows up once a button is clicked */}
+        <div id="quotes" className="max-h-[150px] sm:col-auto hidden sm:flex">
           <PopUpQuotes isDarkMode={isDarkMode} />
         </div>
 
