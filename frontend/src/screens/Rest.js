@@ -158,9 +158,9 @@ function Rest({ isDarkMode, handleModeChange }) {
       isDarkMode === true
         ? "w-full p-2 bg-[#302E28]"
         : "w-full p-2 bg-[#FFFDEE]"}>
-      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 py-4 place-items-center 
-        justify-around mb-10 sm:mb-0 sm:min-h-[150px]">
-        <div className="text-3xl font-bold">
+      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
+        justify-between mb-10 sm:mb-0 sm:min-h-[150px]">
+        <div className="text-3xl font-bold sm:justify-self-auto justify-self-start">
           <span className={
             isDarkMode === true
               ? "text-[#FBFBFB]"
@@ -171,30 +171,29 @@ function Rest({ isDarkMode, handleModeChange }) {
           {/*empty div */}
         </div>
 
-        <div id="mode-button">
-          <div className="" >
+        <div id="mode-button" className="sm:justify-self-auto justify-self-end">
+          <div>
             <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
           </div>
         </div>
       </div>
 
-      <div id="body" className='flex justify-center'>
-        <div id="timer-affirmations" className="flex my-1">
+      <div id="body" className='grid md:grid-cols-3 justify-center mx-5'>
+        <div id="timer-affirmations" className="my-1">
+          {/* Buttons for landing page */}
+          <div className="flex flex-col items-center">
+            <button
+              onClick={() => navigate('/')}
+              className={
+                isDarkMode === true
+                  ? "bg-[#D4DCFF] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
+                  : "bg-[#BEE6CC] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
+              }>
+              <span>&#8592;</span>
+              <span>Back to Landing Page</span>
+            </button>
+          </div>
           <div>
-            {/* Buttons for rest page */}
-            <div className="flex flex-col items-center">
-              <button
-                onClick={() => navigate('/')}
-                className={
-                  isDarkMode === true
-                    ? "bg-[#D4DCFF] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
-                    : "bg-[#BEE6CC] font-bold text-[#3C3C3C] rounded-xl py-2 px-3 m-auto space-x-2"
-                }>
-                <span>&#8592;</span>
-                <span>Back to Landing Page</span>
-              </button>
-            </div>
-
             <div id="timer">
               <Timer isDarkMode={isDarkMode} />
             </div>
@@ -241,7 +240,6 @@ function Rest({ isDarkMode, handleModeChange }) {
                   onClick={changeOutdoorAffirmation}>Next Affirmation</button>
               </div>
 
-
               <div className="flex flex-col items-center mt-8">
                 <div className={
                   isDarkMode === true
@@ -266,7 +264,7 @@ function Rest({ isDarkMode, handleModeChange }) {
 
         </div>
 
-        <div id="suggestions">
+        <div id="suggestions" className='md:col-span-2 md:mt-0 mt-10'>
           <div id="page-info" className="my-1 mx-12 p-1 flex flex-col items-center rounded bg-gradient-to-r from-green-200 to-blue-200">
             <h className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#FFFFFF]">
               TAKE A BREAK & DE-STRESS</h>

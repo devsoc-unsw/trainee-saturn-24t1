@@ -23,22 +23,21 @@ function Todo({ isDarkMode, handleModeChange }) {
         ? "flex flex-col place-items-center w-full p-2 bg-[#302E28]"
         : "flex flex-col place-items-center w-full p-2 bg-[#FFFDEE]"
     } >
-      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 py-4 place-items-center 
-        justify-around sm:min-h-[150px]">
-        <div className="text-3xl font-bold">
+      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
+        justify-between mb-10 sm:mb-0 sm:min-h-[150px]">
+        <div className="text-3xl font-bold sm:justify-self-auto justify-self-start">
           <span className={
             isDarkMode === true
               ? "text-[#FBFBFB]"
               : "text=[#302E28]"}>Achieve</span><span className="text-[#2ADCB1]">Mint</span>
           {/* <img src=""></img> */}
         </div>
-
-        <div id="quotes" className="max-h-[150px] sm:col-auto hidden sm:flex">
-          <PopUpQuotes isDarkMode={isDarkMode} />
+        <div className='hidden sm:block'>
+          {/*empty div */}
         </div>
 
-        <div id="mode-button">
-          <div className="" >
+        <div id="mode-button" className="sm:justify-self-auto justify-self-end">
+          <div>
             <ModeButton isDarkMode={isDarkMode} handleModeChange={handleModeChange} />
           </div>
         </div>
