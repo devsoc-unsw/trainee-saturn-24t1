@@ -270,7 +270,7 @@ function Rest({ isDarkMode, handleModeChange }) {
           
           <div id="suggestions">
 
-            <div id="page-info" className="my-1 mx-2 p-5 flex flex-col items-center rounded bg-gradient-to-r from-green-200 to-blue-200">
+            <div id="page-info" className="my-1 mx-12 p-1 flex flex-col items-center rounded bg-gradient-to-r from-green-200 to-blue-200">
               <h className="text-3xl font-bold text-black transition duration-300 transform hover:scale-105 hover:text-[#FFFFFF]">
                 TAKE A BREAK & DE-STRESS</h>
               <p className="text-[#302E28]">
@@ -279,7 +279,7 @@ function Rest({ isDarkMode, handleModeChange }) {
 
             <div id="all-suggestions">
 
-              <div className="mt-8 w-full flex flex-col items-center">
+              <div className="mt-3 w-full flex flex-col items-center">
                 <h className={
                   isDarkMode === true
                     ? "text-xl font-bold self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
@@ -346,7 +346,7 @@ function Rest({ isDarkMode, handleModeChange }) {
                 </div>
               </div>
 
-              <div className="mt-8 w-full flex flex-col items-center">
+              <div className="mt-3 w-full flex flex-col items-center">
                 <h className={
                   isDarkMode === true
                     ? "text-xl font-bold self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
@@ -430,11 +430,11 @@ function Rest({ isDarkMode, handleModeChange }) {
                 </div>
               </div>
 
-              <div className="mt-8 w-full flex flex-col items-center">
+              <div className="mt-1 w-full flex flex-col items-center">
                 <h className={
                   isDarkMode === true
-                    ? "text-xl font-bold mt-8 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
-                    : "text-xl font-bold mt-8 self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
+                    ? "text-xl font-bold mt-2 self-center rounded text-[#FBFBFB] transition duration-300 transform hover:scale-105"
+                    : "text-xl font-bold mt-2 self-center rounded text-[#302E28] transition duration-300 transform hover:scale-105"
                 }>COMFORT ACTIVITIES</h>
 
                 <div className="image-container">
