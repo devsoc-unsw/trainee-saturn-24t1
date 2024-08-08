@@ -5,7 +5,6 @@ html {
   background-color: #302E28;
   display: flex;
   justify-content: center;
-  overflow-x: hidden;
 }
 
 html,
