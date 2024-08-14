@@ -9,11 +9,12 @@ function Landing({ isDarkMode, handleModeChange }) {
   const navigate = useNavigate();
 
   return (
-    <div className={
+    <div id="hide-scrollbar" className={
       isDarkMode === true
-        ? "p-2 bg-[#302E28] items-center text-center h-screen w-full align-middle "
-        : "p-2 bg-[#FFFDEE] items-center text-center h-screen w-full align-middle"}>
-      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
+        ? "p-2 bg-[#302E28] items-center text-center h-screen w-screen align-middle"
+        : "p-2 bg-[#FFFDEE] items-center text-center h-screen w-screen align-middle"}
+    >
+      <div id="header" className="w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
         justify-between mb-10 sm:mb-0 sm:min-h-[150px]">
         <div className="text-3xl font-bold sm:justify-self-auto justify-self-start">
           <span className={
@@ -35,8 +36,8 @@ function Landing({ isDarkMode, handleModeChange }) {
 
       <div className={
         isDarkMode === true
-          ? "m-auto p-3 bg-[#80CDBB] w-3/5 text-center rounded-xl justify-center items-center align-middle"
-          : "m-auto p-3 bg-[#BEE6CC] w-3/5 text-center rounded-xl justify-center items-center align-middle"
+          ? "m-auto p-3 bg-[#80CDBB] sm:w-3/5 sm:max-w-none max-w-80 text-center rounded-xl justify-center items-center align-middle"
+          : "m-auto p-3 bg-[#BEE6CC] sm:w-3/5 sm:max-w-none max-w-80 text-center rounded-xl justify-center items-center align-middle"
       }>
         <div className="w-4/5 m-auto ">
           {/* welcome message */}

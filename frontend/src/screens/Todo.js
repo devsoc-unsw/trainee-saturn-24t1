@@ -18,12 +18,12 @@ function Todo({ isDarkMode, handleModeChange }) {
   };
 
   return (
-    <div className={
+    <div id="hide-scrollbar" className={
       isDarkMode === true
-        ? "flex flex-col place-items-center w-full p-2 bg-[#302E28]"
-        : "flex flex-col place-items-center w-full p-2 bg-[#FFFDEE]"
+        ? "p-2 bg-[#302E28] items-center h-screen w-screen align-middle"
+        : "p-2 bg-[#FFFDEE] items-center h-screen w-screen align-middle"
     } >
-      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
+      <div id="header" className="w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
         justify-between mb-10 sm:mb-0 sm:min-h-[150px]">
         <div className="text-3xl font-bold sm:justify-self-auto justify-self-start">
           <span className={
@@ -32,8 +32,11 @@ function Todo({ isDarkMode, handleModeChange }) {
               : "text=[#302E28]"}>Achieve</span><span className="text-[#2ADCB1]">Mint</span>
           {/* <img src=""></img> */}
         </div>
-        <div className='hidden sm:block'>
-          {/*empty div */}
+
+        <div id="quotes" className="hidden sm:block max-h-[150px]">
+          {/* quotes pop up when you finish a task will later implement
+              prop so that quote shows up once a button is clicked */}
+          <PopUpQuotes isDarkMode={isDarkMode} />
         </div>
 
         <div id="mode-button" className="sm:justify-self-auto justify-self-end">
@@ -43,7 +46,7 @@ function Todo({ isDarkMode, handleModeChange }) {
         </div>
       </div>
 
-      <div id="body" className="grid md:grid-cols-2 max-w-max justify-center">
+      <div id="body" className="m-auto grid md:grid-cols-2 max-w-max justify-center">
         <div className="min-w-96 basis-1/3">
           {/*button to go back to landing page,
           position is a bit weird, but will probably fix that later when we have
@@ -61,7 +64,7 @@ function Todo({ isDarkMode, handleModeChange }) {
             </button>
           </div>
 
-          <div id="to-do-list" className="min-w-96 mx-2 my-4 basis-1/3">
+          <div id="to-do-list" className="mx-4 my-4 basis-1/3">
             <ListOfTabs onData={handleData} isDarkMode={isDarkMode} />
           </div>
         </div>

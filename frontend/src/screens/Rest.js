@@ -154,11 +154,11 @@ function Rest({ isDarkMode, handleModeChange }) {
   };
 
   return (
-    <div className={
+    <div id="hide-scrollbar" className={
       isDarkMode === true
-        ? "w-full p-2 bg-[#302E28]"
-        : "w-full p-2 bg-[#FFFDEE]"}>
-      <div id="header" className="static w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
+        ? "w-screen p-2 bg-[#302E28] align-middle"
+        : "w-screen p-2 bg-[#FFFDEE] align-middle"}>
+      <div id="header" className="w-screen grid sm:grid-cols-3 grid-cols-2 m-2 p-4 place-items-center 
         justify-between mb-10 sm:mb-0 sm:min-h-[150px]">
         <div className="text-3xl font-bold sm:justify-self-auto justify-self-start">
           <span className={
@@ -526,7 +526,7 @@ function Rest({ isDarkMode, handleModeChange }) {
           }
         `}
       </style>
-    </div>
+    </ div >
   );
 }
 

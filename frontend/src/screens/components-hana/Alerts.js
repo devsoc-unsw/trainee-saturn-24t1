@@ -28,7 +28,7 @@ const Alerts = ({ tabs, currentTab, isDarkMode }) => {
                 ? 'flex mx-2 my-3 py-4 px-5 bg-[#D4DCFF] rounded-lg'
                 : 'flex mx-2 my-3 py-4 px-5 bg-[#BEE6CC] rounded-lg'}>
             <AccessAlarmIcon />
-            <div className='px-4 h-20 overflow-y-auto'>
+            <div id="hide-scrollbar" className='px-4 h-20 max-h-20 min-h-20'>
                 {taskFlag === false
                     ? <div>No tasks due!</div>
                     : task_list.map(x => (

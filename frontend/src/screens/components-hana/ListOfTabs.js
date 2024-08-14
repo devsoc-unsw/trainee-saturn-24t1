@@ -210,87 +210,88 @@ const ListOfTabs = (props) => {
       }>
         <PopUpAlert msg="Tab name cannot be empty" />
       </div>
-      <div id="nav-tasks" className="flex">
-        {tabs.map(x => (
-          <div
-            className={
-              x.id === currentTab
-                ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB] font-bold rounded-t-xl"
-                : "py-1 px-3 text-[#3C3C3C] bg-[#62A193] rounded-t-xl"
-            }
-          >
-            <button
-              onClick={() => handleChangeTab(x.id)}
-              onDoubleClick={() => editTabText(x.id)}
-            >
-              {currentTab === x.id ? (
-                <input
-                  id="tab-name-edit-box"
-                  ref={(element) => (textareaRefs.current[x.id] = element)}
-                  className="bg-inherit hidden resize-none rounded-lg px-1 
-                                            border-none focus:outline-none"
-                  type="text"
-                  size="4"
-                  defaultValue={x.name}
-                  onChange={() => tabNameChanged(x.id)}
-                  onKeyDown={(event) => closeTabNameEditBox(event, x.id)}
-                  onBlur={(event) => closeTabNameEditBox(event, x.id, 1)}
-                />
-              ) : null}
-
-              <div
-                className={
-                  isEditing === x.id
-                    ? "hidden"
-                    : "flex"
-                }>
-                {x.name}
-              </div>
-            </button>
-            <button
-              onClick={() => deleteTab(x.id)}
+      <div className="">
+        <div id="nav-tasks" className="flex">
+          {tabs.map(x => (
+            <div
               className={
                 x.id === currentTab
-                  ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB]"
-                  : "py-1 px-3 text-[#3C3C3C] bg-[#62A193]"
+                  ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB] font-bold rounded-t-xl"
+                  : "py-1 px-3 text-[#3C3C3C] bg-[#62A193] rounded-t-xl"
               }
-            >x</button>
-          </div >))
-        }
-        <button
-          onClick={() => addTab()}
-          className="py-2 px-4 text-[#3C3C3C] bg-[#B1C9DF] font-bold rounded-t-xl"
-        >+</button>
-      </div >
-
-      <div id="tasks-info" className="px-4 py-6 bg-[#80CDBB] rounded-b-md rounded-tr-md max-h-screen
-        overflow-y-scroll">
-        {showTaskList(currentTab) === undefined
-          ? <div>No tabs selected</div>
-          : <div className="flex justify-between p-2 pb-3">
-            <div className="mx-3">
-              <h2 className="text-[#3C3C3C] text-2xl font-bold">TASKS</h2>
-              <h3 className="text-[#3C3C3C]">{
-                showTaskList(currentTab) === undefined
-                  ? 0
-                  : showTaskList(currentTab).length
-              } tasks left</h3>
-            </div>
-            <div className="add-task">
+            >
               <button
-                onClick={() => addTask()}
-                className="mx-2 my-1 px-3 py-1 bg-[#707C87] text-[#E9E9E9] text-sm rounded-2xl font-semibold hover:bg-[#5B656D]"
-              >ADD TASK +</button>
-            </div>
-          </div>}
+                onClick={() => handleChangeTab(x.id)}
+                onDoubleClick={() => editTabText(x.id)}
+              >
+                {currentTab === x.id ? (
+                  <input
+                    id="tab-name-edit-box"
+                    ref={(element) => (textareaRefs.current[x.id] = element)}
+                    className="bg-inherit hidden resize-none rounded-lg px-1 
+                                            border-none focus:outline-none"
+                    type="text"
+                    size="4"
+                    defaultValue={x.name}
+                    onChange={() => tabNameChanged(x.id)}
+                    onKeyDown={(event) => closeTabNameEditBox(event, x.id)}
+                    onBlur={(event) => closeTabNameEditBox(event, x.id, 1)}
+                  />
+                ) : null}
 
-        <div id="tasks">
+                <div
+                  className={
+                    isEditing === x.id
+                      ? "hidden"
+                      : "flex"
+                  }>
+                  {x.name}
+                </div>
+              </button>
+              <button
+                onClick={() => deleteTab(x.id)}
+                className={
+                  x.id === currentTab
+                    ? "py-1 px-3 text-[#3C3C3C] bg-[#80CDBB]"
+                    : "py-1 px-3 text-[#3C3C3C] bg-[#62A193]"
+                }
+              >x</button>
+            </div >))
+          }
+          <button
+            onClick={() => addTab()}
+            className="py-2 px-4 text-[#3C3C3C] bg-[#B1C9DF] font-bold rounded-t-xl"
+          >+</button>
+        </div >
+        <div id="tasks-info" className="px-4 py-6 bg-[#80CDBB] rounded-b-md rounded-tr-md">
           {showTaskList(currentTab) === undefined
-            ? <div></div>
-            : showTaskList(currentTab).map(x => (
-              <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x} isDarkMode={props.isDarkMode} />))}
+            ? <div>No tabs selected</div>
+            : <div className="flex justify-between p-2 pb-3">
+              <div className="mx-3">
+                <h2 className="text-[#3C3C3C] text-2xl font-bold">TASKS</h2>
+                <h3 className="text-[#3C3C3C]">{
+                  showTaskList(currentTab) === undefined
+                    ? 0
+                    : showTaskList(currentTab).length
+                } tasks left</h3>
+              </div>
+              <div className="add-task">
+                <button
+                  onClick={() => addTask()}
+                  className="mx-2 my-1 px-3 py-1 bg-[#707C87] text-[#E9E9E9] text-sm rounded-2xl font-semibold hover:bg-[#5B656D]"
+                >ADD TASK +</button>
+              </div>
+            </div>}
+
+          <div id="tasks" className="max-h-52 overflow-y-scroll max-w-full">
+            {showTaskList(currentTab) === undefined
+              ? <div></div>
+              : showTaskList(currentTab).map(x => (
+                <Task tabs={tabs} setTabs={setTabs} currentTab={currentTab} task={x} isDarkMode={props.isDarkMode} />))}
+          </div>
         </div>
       </div>
+
       {sendData()}
     </>
   );
